@@ -9,6 +9,11 @@ public class task1 {
         // Prints a message to indicate to the user that they should input information.
         System.out.println("Enter user information");
 
+        if (args.length == 0) {
+            System.out.println("No user information provided.");
+            return;
+        }
+
         // Prints each argument that was passed to the program.
         for (int i = 0; i < args.length; i++) {
             System.out.println(args[i]);
