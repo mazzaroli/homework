@@ -1,7 +1,5 @@
 # homework_23_10_23
 
-Sure, here's a comprehensive README with instructions for both tasks, emphasizing the implementation of Bubble Sort for the second task:
-
 # Programming Exercises
 
 This repository contains two programming exercises:
