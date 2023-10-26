@@ -1,4 +1,4 @@
-package tarea_ivan_snytko;
+package class_23_10_10;
 
 import java.util.Arrays;
 
@@ -11,7 +11,7 @@ Insertion sort, Selection sort, bubble sort, Merge sort, Quicksort.
 public class BubbleSort {
     public static void main(String[] args) {
         // Unsorted array
-        int[] arr = {5, 2, 4, 1, 3};
+        int[] arr = {5, 4, 3, 2, 1};
 
         // Sort the array using bubble sort
         bubbleSort(arr);
