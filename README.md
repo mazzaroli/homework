@@ -1,35 +1,24 @@
-# homework_23_10_23
+# Solvd QA Tester Bootcamp Homework Repository
 
-# Programming Exercises
+This repository contains my homework projects from the Solvd QA Tester Bootcamp. Each project is organized by date and placed within the `src/main/java` directory. 
 
-This repository contains two programming exercises:
+## Homework Projects
 
-1. **User Info App:** Create a simple system.out app that prints information about the user passed as a parameter to the main function.
+The projects are structured in the following format:
 
-2. **Sorting Algorithm Implementation:** Implement the Bubble Sort algorithm from the list of sorting algorithms: Insertion sort, Selection sort, Bubble sort, Merge sort, or Quicksort.
+```
+- src
+    - main
+        - java
+            - homework_DD-MM-YY (Date of the homework)
+```
 
-## Instructions
+Each homework assignment is stored in its corresponding package named after the date and topic. Inside each package, you can find the Java files for that specific homework assignment.
 
-### Prerequisites
+## Homework Overview
 
-- Java Development Kit (JDK) installed and configured
+- **Homework 1:**
+    - Description of the first homework assignment.
 
-### Task 1: User Info App
-
-1. Create a Java file named `UserInfoApp.java`.
-
-2. Implement the `main()` method that takes a string array of user information as a parameter.
-
-3. Parse the user information and print it to the console using `System.out.println()`.
-  
-4. Run the compiled class file using `java path/UserInfo John Doe 30 Developer` replacing the example argument with actual user information.
-
-### Task 2: Bubble Sort Implementation
-
-1. Create a Java file named `BubbleSort.java`.
-
-2. Implement the Bubble Sort algorithm as a method.
-
-3. Create a `main()` method to test the Bubble Sort algorithm.
-
-4. Run the compiled class file using `java path/BubbleSort`.
+- **Homework 2:**
+    - Description of the second homework assignment.
