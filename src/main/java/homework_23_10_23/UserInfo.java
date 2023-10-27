@@ -1,4 +1,4 @@
-package class_23_10_10;
+package homework_23_10_23;
 /*
 Create a simple system.out app.
 Print info about the user that should be passed to the main function as a parameter.

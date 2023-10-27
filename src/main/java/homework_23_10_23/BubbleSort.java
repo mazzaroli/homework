@@ -1,4 +1,4 @@
-package class_23_10_10;
+package homework_23_10_23;
 
 import java.util.Arrays;
 
