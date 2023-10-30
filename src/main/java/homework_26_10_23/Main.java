@@ -14,14 +14,14 @@ public class Main {
         Mouse mouse = new Mouse("Wireless");
 
         // Creating instances of Desktop, Laptop, and Tablet that are subclasses of the Computer class
-        Desktop desktop = new Desktop("Dell", "XPS 9000", cpu, gpuAMD, ram, keyboard, monitor, mouse);
-        Laptop laptop = new Laptop("Lenovo", "ThinkPad X1", cpu, gpu3080, ram, keyboard, monitor, mouse);
-        Tablet tablet = new Tablet("Apple", "iPad Pro", cpu, gpu4090, ram, keyboard, monitor, mouse);
+        Desktop desktop = new Desktop("ATX","Dell", "XPS 9000", cpu, gpuAMD, ram, keyboard, monitor, mouse);
+        Laptop laptop = new Laptop(48,"Lenovo", "ThinkPad X1", cpu, gpu3080, ram, keyboard, monitor, mouse);
+        Tablet tablet = new Tablet(true,"Apple", "iPad Pro", cpu, gpu4090, ram, keyboard, monitor, mouse);
         Desktop desktopDefault = new Desktop();
 
         // Printing out specific properties of Desktop, Laptop, and Tablet instances
-        System.out.println("Desktop Brand: " + desktop.getBrand());
-        System.out.println("Laptop Model: " + laptop.getModel());
+        System.out.println("Desktop Form Factor: " + desktop.getFormFactor());
+        System.out.println("Battery Life In Hours: " + laptop.getBatteryLifeInHours());
 
         System.out.println("");
         desktopDefault.printInfo();

@@ -2,6 +2,8 @@ package homework_26_10_23;
 
 // Desktop Class
 class Desktop extends Computer {
+    private String formFactor;
+
     private CPU cpu;
     private GPU gpu;
     private RAM ram;
@@ -11,6 +13,7 @@ class Desktop extends Computer {
 
     // Default constructor
     public Desktop() {
+        this.formFactor = "Default";
         this.cpu = new CPU("Default");
         this.gpu = new GPU("Default");
         this.ram = new RAM(8); // Default RAM size in gigabytes
@@ -20,8 +23,9 @@ class Desktop extends Computer {
     }
 
     // Constructor for the Desktop class
-    public Desktop(String brand, String model, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
+    public Desktop(String formFactor, String brand, String model, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
         super(brand, model);
+        this.formFactor = formFactor;
         this.cpu = cpu;
         this.gpu = gpu;
         this.ram = ram;
@@ -34,13 +38,18 @@ class Desktop extends Computer {
     public void printInfo() {
         super.printInfo();
         // Additional info for Desktop
-        System.out.println(" CPU: " + this.cpu.getModel() +
+        System.out.println(" Form Factor: " + this.formFactor +
+                " CPU: " + this.cpu.getModel() +
                 ", GPU: " + this.gpu.getModel() +
                 ", RAM: " + this.ram.getCapacity() +
                 ", Keyboard: " + this.keyboard.getType() +
                 ", Monitor: " + this.monitor.getType() +
                 ", Mouse: " + this.mouse.getType());
     }
+
+    // Getters and setters for formFactor
+    public String getFormFactor() {return formFactor;}
+    public void setFormFactor(String formFactor) {this.formFactor = formFactor;}
 
     // Getters and setters for CPU
     public CPU getCpu() { return cpu; }

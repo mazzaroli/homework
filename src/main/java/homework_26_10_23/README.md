@@ -10,4 +10,3 @@ This homework assignment involves creating a class hierarchy based on a topic pr
 - Creation of a separate class with main() for object instantiation
 
 The project aims to demonstrate understanding and proficiency in building complex class hierarchies, encapsulation, and object-oriented programming principles.
-

@@ -2,6 +2,8 @@ package homework_26_10_23;
 
 // Laptop Class
 class Laptop extends Computer {
+    private int batteryLifeInHours;
+
     private CPU cpu;
     private GPU gpu;
     private RAM ram;
@@ -11,6 +13,7 @@ class Laptop extends Computer {
 
     // Default constructor
     public Laptop() {
+        this.batteryLifeInHours = 0;
         this.cpu = new CPU("Default");
         this.gpu = new GPU("Default");
         this.ram = new RAM(8); // Default RAM size in gigabytes
@@ -20,8 +23,9 @@ class Laptop extends Computer {
     }
 
     // Constructor for the Laptop class
-    public Laptop(String brand, String model, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
+    public Laptop(int batteryLifeInHours, String brand, String model, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
         super(brand, model);
+        this.batteryLifeInHours = batteryLifeInHours;
         this.cpu = cpu;
         this.gpu = gpu;
         this.ram = ram;
@@ -34,7 +38,8 @@ class Laptop extends Computer {
     public void printInfo() {
         super.printInfo();
         // Additional info for Tablet
-        System.out.println(" CPU: " + this.cpu.getModel() +
+        System.out.println(" Battery Life In Hours: " + this.batteryLifeInHours+
+                " CPU: " + this.cpu.getModel() +
                 ", GPU: " + this.gpu.getModel() +
                 ", RAM: " + this.ram.getCapacity() +
                 ", Keyboard: " + this.keyboard.getType() +
@@ -42,6 +47,10 @@ class Laptop extends Computer {
                 ", Mouse: " + this.mouse.getType());
 
     }
+
+    // Getters and setters for BatteryLifeInHours
+    public int getBatteryLifeInHours() {return batteryLifeInHours;}
+    public void setBatteryLifeInHours(int batteryLifeInHours) {this.batteryLifeInHours = batteryLifeInHours;}
 
     // Getters and setters for CPU
     public CPU getCpu() { return cpu; }
