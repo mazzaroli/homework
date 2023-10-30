@@ -1,7 +1,15 @@
-package homework_26_10_23;
+package homework_26_10_23.devices;
+
+import homework_26_10_23.components.Keyboard;
+import homework_26_10_23.components.Mouse;
+import homework_26_10_23.components.Monitor;
+import homework_26_10_23.components.CPU;
+import homework_26_10_23.components.GPU;
+import homework_26_10_23.components.RAM;
+import homework_26_10_23.computer.Computer;
 
 // Laptop Class
-class Laptop extends Computer {
+public class Laptop extends Computer {
     private int batteryLifeInHours;
 
     private CPU cpu;

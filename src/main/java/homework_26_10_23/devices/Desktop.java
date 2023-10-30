@@ -1,7 +1,15 @@
-package homework_26_10_23;
+package homework_26_10_23.devices;
+
+import homework_26_10_23.components.Keyboard;
+import homework_26_10_23.components.Mouse;
+import homework_26_10_23.components.Monitor;
+import homework_26_10_23.components.CPU;
+import homework_26_10_23.components.GPU;
+import homework_26_10_23.components.RAM;
+import homework_26_10_23.computer.Computer;
 
 // Desktop Class
-class Desktop extends Computer {
+public class Desktop extends Computer {
     private String formFactor;
 
     private CPU cpu;

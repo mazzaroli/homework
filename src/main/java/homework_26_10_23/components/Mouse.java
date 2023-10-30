@@ -1,7 +1,7 @@
-package homework_26_10_23;
+package homework_26_10_23.components;
 
 // Mouse Class
-class Mouse {
+public class Mouse {
     private String type;
 
     // Constructor for Mouse

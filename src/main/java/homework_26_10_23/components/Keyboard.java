@@ -1,7 +1,7 @@
-package homework_26_10_23;
+package homework_26_10_23.components;
 
 // Keyboard Class
-class Keyboard {
+public class Keyboard {
     private String type;
 
     // Constructor for Keyboard

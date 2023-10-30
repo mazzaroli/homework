@@ -1,7 +1,7 @@
-package homework_26_10_23;
+package homework_26_10_23.components;
 
 // RAM Class
-class RAM {
+public class RAM {
     private int capacity;
 
     // Constructor for RAM

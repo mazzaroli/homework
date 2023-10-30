@@ -1,7 +1,7 @@
-package homework_26_10_23;
+package homework_26_10_23.computer;
 
 // Computer Class
-class Computer {
+public class Computer {
     private String brand;
     private String model;
 

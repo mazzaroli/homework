@@ -1,7 +1,7 @@
-package homework_26_10_23;
+package homework_26_10_23.components;
 
 // GPU Class
-class GPU {
+public class GPU {
     private String model;
 
     // Constructor for GPU

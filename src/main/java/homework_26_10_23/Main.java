@@ -1,5 +1,15 @@
 package homework_26_10_23;
 
+import homework_26_10_23.components.Keyboard;
+import homework_26_10_23.components.Mouse;
+import homework_26_10_23.components.Monitor;
+import homework_26_10_23.components.CPU;
+import homework_26_10_23.components.GPU;
+import homework_26_10_23.components.RAM;
+import homework_26_10_23.devices.Desktop;
+import homework_26_10_23.devices.Laptop;
+import homework_26_10_23.devices.Tablet;
+
 // Main Class
 public class Main {
     public static void main(String[] args) {
