@@ -1,0 +1,15 @@
+package homework_30_10_23.components;
+
+// Mouse Class
+public class Mouse {
+    private String type;
+
+    // Constructor for Mouse
+    public Mouse(String type) { this.type = type; }
+
+    // Getter for Mouse type
+    public String getType() { return type; }
+
+    // Setter for Mouse type
+    public void setType(String type) { this.type = type; }
+}
