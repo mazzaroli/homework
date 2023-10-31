@@ -5,8 +5,10 @@ import homework_30_10_23.computer.Computer;
 
 // Tablet Class
 public class Tablet extends Computer {
+    // Field for the Tablet class
     private boolean hasTouchPen;
 
+    // Fields for the components of Tablet
     private CPU cpu;
     private GPU gpu;
     private RAM ram;
@@ -14,7 +16,7 @@ public class Tablet extends Computer {
     private Monitor monitor;
     private Mouse mouse;
 
-    // Default constructor
+    // Default constructor for Tablet
     public Tablet() {
         this.hasTouchPen = false;
 
@@ -38,6 +40,7 @@ public class Tablet extends Computer {
         this.mouse = mouse;
     }
 
+    // Override the printInfo method to print Tablet information
     @Override
     public void printInfo(){
         super.printInfo();
@@ -49,6 +52,7 @@ public class Tablet extends Computer {
                 ", Monitor: " + this.monitor.getType() +
                 ", Mouse: " + this.mouse.getType());
     }
+
     // Getters and setters for HasTouchPen
     public boolean isHasTouchPen() {return hasTouchPen;}
     public void setHasTouchPen(boolean hasTouchPen) {this.hasTouchPen = hasTouchPen;}

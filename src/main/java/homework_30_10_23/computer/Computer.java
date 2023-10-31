@@ -1,11 +1,12 @@
 package homework_30_10_23.computer;
 
 // Computer Class
-public class Computer extends Object{
+public class Computer {
+    // Fields for the Computer class
     private String brand;
     private String model;
 
-
+    // Default constructor for the Computer class
     public Computer(){
         this.brand = "Default";
         this.model = "Default";
@@ -17,17 +18,20 @@ public class Computer extends Object{
         this.model = model;
     }
 
+    // Override toString method
     @Override
     public String toString() {
         return "From Computer{ brand='" + brand + "', model='" + model + "' }";
     }
 
+    // Override hashCode method
     @Override
     public int hashCode() {
         // Calculate hash code based on brand and model
         return 31 * brand.hashCode() + model.hashCode();
     }
 
+    // Override equals method
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -53,6 +57,7 @@ public class Computer extends Object{
     // Setter for model
     public void setModel(String model) { this.model = model; }
 }
+
 
 
 

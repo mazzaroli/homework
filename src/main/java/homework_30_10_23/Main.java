@@ -43,18 +43,21 @@ public class Main {
         System.out.println("");
         gpu4090.displayDetails();
 
+        // Override methods from Computer.java
         System.out.println("\nOverride methods from Computer.java:");
         System.out.println(desktop.toString());
         System.out.println(desktop.hashCode());
         System.out.println(desktop.equals(desktopPoly));
         System.out.println(desktop.equals(desktopDefault));
 
+        // Override methods from CPU.java
         System.out.println("\nOverride methods from CPU.java:");
         System.out.println(cpu.toString());
         System.out.println(cpu.hashCode());
         System.out.println(cpu.equals(desktopPoly));
         System.out.println(cpu.equals(cpu));
 
+        // Override methods from Monitor.java
         System.out.println("\nOverride methods from Monitor.java:");
         System.out.println(monitor.toString());
         System.out.println(monitor.hashCode());

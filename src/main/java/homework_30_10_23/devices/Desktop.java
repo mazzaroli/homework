@@ -5,8 +5,10 @@ import homework_30_10_23.computer.Computer;
 
 // Desktop Class
 public class Desktop extends Computer {
+    // Field for the Desktop class
     private String formFactor;
 
+    // Fields for the components of Desktop
     private CPU cpu;
     private GPU gpu;
     private RAM ram;
@@ -14,7 +16,7 @@ public class Desktop extends Computer {
     private Monitor monitor;
     private Mouse mouse;
 
-    // Default constructor
+    // Default constructor for Desktop
     public Desktop() {
         this.formFactor = "Default";
         this.cpu = new CPU("Default","Default",0);
@@ -37,6 +39,7 @@ public class Desktop extends Computer {
         this.mouse = mouse;
     }
 
+    // Override the printInfo method to print Desktop information
     @Override
     public void printInfo() {
         super.printInfo();
