@@ -1,16 +1,22 @@
 package homework_30_10_23.components;
 
 // CPU Class
-public class CPU extends Component{
+public class CPU extends Component {
     // Fields for the CPU class
     protected String manufacturer;
     protected double speed;
 
-    // Constructor for the CPU class
+    // Default constructor for the CPU class
+    public CPU() {
+        setManufacturer("Default");
+        setSpeed(0);
+    }
+
+    // Constructor for the CPU class with specified attributes
     public CPU(String model, String manufacturer, double speed) {
         super(model);
-        this.manufacturer = manufacturer;
-        this.speed = speed;
+        setManufacturer(manufacturer);
+        setSpeed(speed);
     }
 
     // Method to display CPU details
@@ -18,14 +24,14 @@ public class CPU extends Component{
     public void displayDetails() {
         System.out.println("CPU Details:");
         System.out.println("Model: " + getModel());
-        System.out.println("Manufacturer: " + manufacturer);
-        System.out.println("Speed: " + speed + " GHz");
+        System.out.println("Manufacturer: " + getManufacturer());
+        System.out.println("Speed: " + getSpeed() + " GHz");
     }
 
     // Override toString method
     @Override
     public String toString() {
-        return "CPU{ manufacturer='" + manufacturer + "', speed=" + speed + " }";
+        return "CPU{ manufacturer='" + getManufacturer() + "', speed=" + getSpeed() + " }";
     }
 
     // Override hashCode method
@@ -44,11 +50,23 @@ public class CPU extends Component{
         return manufacturer.equals(cpu.manufacturer) && speed == cpu.speed;
     }
 
-    // Getters and setters for Manufacturer
-    public String getManufacturer() {return manufacturer;}
-    public void setManufacturer(String manufacturer) {this.manufacturer = manufacturer;}
+    // Getter method for Manufacturer
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
-    // Getters and setters for Speed
-    public double getSpeed() {return speed;}
-    public void setSpeed(int speed) {this.speed = speed;}
+    // Setter method for Manufacturer
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    // Getter method for Speed
+    public double getSpeed() {
+        return speed;
+    }
+
+    // Setter method for Speed
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 }
