@@ -5,39 +5,43 @@ public class Monitor {
     // Field for the Monitor class
     private String type;
 
-    // Constructor for Monitor
-    public Monitor(String type) {
-        this.type = type;
+    // Default constructor for Monitor, setting the type to "Default"
+    public Monitor() {
+        setType("Default");
     }
 
-    // Override toString method
+    // Constructor for Monitor with a specified type
+    public Monitor(String type) {
+        setType(type);
+    }
+
+    // Override toString method to provide a meaningful string representation
     @Override
     public String toString() {
         return "Monitor{ resolution='" + type + "' }";
     }
 
-    // Override hashCode method
+    // Override hashCode method to calculate the hash code based on the resolution
     @Override
     public int hashCode() {
-        // Calculate hash code based on resolution
         return 31 * type.hashCode();
     }
 
-    // Override equals method
+    // Override equals method to compare Monitor objects based on the type
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Monitor monitor = (Monitor) obj;
-        return type.equals(monitor.type);
+        return getType().equals(monitor.type);
     }
 
-    // Getter for Monitor type
+    // Getter method to retrieve the type of the monitor
     public String getType() {
         return type;
     }
 
-    // Setter for Monitor type
+    // Setter method to set the type of the monitor
     public void setType(String type) {
         this.type = type;
     }
