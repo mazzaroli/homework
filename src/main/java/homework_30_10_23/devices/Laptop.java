@@ -8,77 +8,52 @@ public class Laptop extends Computer {
     // Field for the Laptop class
     private int batteryLifeInHours;
 
-    // Fields for the components of Laptop
-    private CPU cpu;
-    private GPU gpu;
-    private RAM ram;
-    private Keyboard keyboard;
-    private Monitor monitor;
-    private Mouse mouse;
-
     // Default constructor for Laptop
     public Laptop() {
-        this.batteryLifeInHours = 0;
-        this.cpu = new CPU("Default","Default", 0);
-        this.gpu = new GPU("Default", 0, 0);
-        this.ram = new RAM(8); // Default RAM size in gigabytes
-        this.keyboard = new Keyboard("Default");
-        this.monitor = new Monitor("Default");
-        this.mouse = new Mouse("Default");
+        super();
+        setBatteryLifeInHours(0);
+        this.setCpu(new CPU());
+        this.setGpu(new GPU());
+        this.setRam(new RAM());
+        this.setKeyboard(new Keyboard());
+        this.setMonitor(new Monitor());
+        this.setMouse(new Mouse());
     }
 
     // Constructor for the Laptop class
     public Laptop(int batteryLifeInHours, String brand, String model, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
-        super(brand, model);
-        this.batteryLifeInHours = batteryLifeInHours;
-        this.cpu = cpu;
-        this.gpu = gpu;
-        this.ram = ram;
-        this.keyboard = keyboard;
-        this.monitor = monitor;
-        this.mouse = mouse;
+        super(brand, model, cpu, gpu, ram, keyboard, monitor, mouse);
+        setBatteryLifeInHours(batteryLifeInHours);
+        this.setCpu(cpu);
+        this.setGpu(gpu);
+        this.setRam(ram);
+        this.setKeyboard(keyboard);
+        this.setMonitor(monitor);
+        this.setMouse(mouse);
     }
 
     // Override the printInfo method to print Laptop information
     @Override
     public void printInfo() {
+        System.out.print("Laptop: ");
         super.printInfo();
         // Additional info for Laptop
-        System.out.println(" Battery Life In Hours: " + this.batteryLifeInHours+
-                " CPU: " + this.cpu.getModel() +
-                ", GPU: " + this.gpu.getModel() +
-                ", RAM: " + this.ram.getCapacity() +
-                ", Keyboard: " + this.keyboard.getType() +
-                ", Monitor: " + this.monitor.getType() +
-                ", Mouse: " + this.mouse.getType());
+        System.out.println(" Battery Life In Hours: " + getBatteryLifeInHours() +
+                " CPU: " + this.getCpu().getModel() +
+                ", GPU: " + this.getGpu().getModel() +
+                ", RAM: " + this.getRam().getCapacity() +
+                ", Keyboard: " + this.getKeyboard().getType() +
+                ", Monitor: " + this.getMonitor().getType() +
+                ", Mouse: " + this.getMouse().getType());
     }
 
-    // Getters and setters for BatteryLifeInHours
-    public int getBatteryLifeInHours() {return batteryLifeInHours;}
-    public void setBatteryLifeInHours(int batteryLifeInHours) {this.batteryLifeInHours = batteryLifeInHours;}
+    // Getter method for BatteryLifeInHours
+    public int getBatteryLifeInHours() {
+        return batteryLifeInHours;
+    }
 
-    // Getters and setters for CPU
-    public CPU getCpu() { return cpu; }
-    public void setCpu(CPU cpu) { this.cpu = cpu; }
-
-    // Getters and setters for GPU
-    public GPU getGpu() { return gpu; }
-    public void setGpu(GPU gpu) { this.gpu = gpu; }
-
-    // Getters and setters for RAM
-    public RAM getRam() { return ram; }
-    public void setRam(RAM ram) { this.ram = ram; }
-
-    // Getters and setters for Keyboard
-    public Keyboard getKeyboard() { return keyboard; }
-    public void setKeyboard(Keyboard keyboard) { this.keyboard = keyboard; }
-
-    // Getters and setters for Monitor
-    public Monitor getMonitor() { return monitor; }
-    public void setMonitor(Monitor monitor) { this.monitor = monitor; }
-
-    // Getters and setters for Mouse
-    public Mouse getMouse() { return mouse; }
-    public void setMouse(Mouse mouse) { this.mouse = mouse; }
+    // Setter method for BatteryLifeInHours
+    public void setBatteryLifeInHours(int batteryLifeInHours) {
+        this.batteryLifeInHours = batteryLifeInHours;
+    }
 }
-
