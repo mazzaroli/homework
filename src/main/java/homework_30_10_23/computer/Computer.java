@@ -32,9 +32,6 @@ public class Computer {
         this.mouse = mouse;
     }
 
-    public Computer(String brand, String model) {
-    }
-
     // Override toString method
     @Override
     public String toString() {
