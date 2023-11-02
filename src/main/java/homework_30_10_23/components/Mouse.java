@@ -4,12 +4,16 @@ package homework_30_10_23.components;
 public class Mouse {
     private String type;
 
+    public Mouse() {
+        setType("Default");
+    }
+
     // Constructor for Mouse
-    public Mouse(String type) { this.type = type; }
+    public Mouse(String type) {
+        setType(type);
+    }
 
-    // Getter for Mouse type
+    // Getter and Setter for Mouse type
     public String getType() { return type; }
-
-    // Setter for Mouse type
     public void setType(String type) { this.type = type; }
 }
