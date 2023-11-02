@@ -16,33 +16,33 @@ public class Computer {
 
     // Default constructor for the Computer class
     public Computer(){
+        setBrand("Default");
+        setModel("Default");
     }
 
     // Constructor for the Computer class
-
-
     public Computer(String brand, String model, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
-        this.brand = brand;
-        this.model = model;
-        this.cpu = cpu;
-        this.gpu = gpu;
-        this.ram = ram;
-        this.keyboard = keyboard;
-        this.monitor = monitor;
-        this.mouse = mouse;
+        setBrand(brand);
+        setModel(model);
+        setCpu(cpu);
+        setGpu(gpu);
+        setRam(ram);
+        setKeyboard(keyboard);
+        setMonitor(monitor);
+        setMouse(mouse);
     }
 
     // Override toString method
     @Override
     public String toString() {
-        return "From Computer{ brand='" + brand + "', model='" + model + "' }";
+        return "From Computer{ brand='" + getBrand() + "', model='" + getModel() + "' }";
     }
 
     // Override hashCode method
     @Override
     public int hashCode() {
         // Calculate hash code based on brand and model
-        return 31 * brand.hashCode() + model.hashCode();
+        return 31 * getBrand().hashCode() + getModel().hashCode();
     }
 
     // Override equals method
