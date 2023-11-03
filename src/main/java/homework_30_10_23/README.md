@@ -32,5 +32,3 @@ This current iteration of the homework has added the following elements to the e
 4. Implementation of encapsulation using the `protected` modifier for specific variables.
 
 ---
-
-Feel free to modify and add any specific details or instructions relevant to your homework.
