@@ -21,8 +21,8 @@ public class Tablet extends Computer {
     }
 
     // Constructor for the Tablet class
-    public Tablet(boolean hasTouchPen, String brand, String model, homework_11_02_23.components.CPU cpu, homework_11_02_23.components.GPU gpu, homework_11_02_23.components.RAM ram, homework_11_02_23.components.Keyboard keyboard, homework_11_02_23.components.Monitor monitor, Mouse mouse) {
-        super(brand, model, cpu, gpu, ram, keyboard, monitor, mouse);
+    public Tablet(boolean hasTouchPen, String brand, boolean isUpgradable, String model, homework_11_02_23.components.CPU cpu, homework_11_02_23.components.GPU gpu, homework_11_02_23.components.RAM ram, homework_11_02_23.components.Keyboard keyboard, homework_11_02_23.components.Monitor monitor, Mouse mouse) {
+        super(brand, model,isUpgradable, cpu, gpu, ram, keyboard, monitor, mouse);
         this.setHasTouchPen(hasTouchPen);
         this.setCpu(cpu);
         this.setGpu(gpu);
