@@ -89,5 +89,8 @@ public class Main {
         mouse.configure();
         mouse.click();
         keyboard.connect();
+
+        Os os = new Os();
+        os.displayOS();
     }
 }
