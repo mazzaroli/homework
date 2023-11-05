@@ -1,24 +1,24 @@
 package homework_11_02_23;
 
 import homework_11_02_23.components.CPU;
-import homework_30_10_23.components.*;
-import homework_30_10_23.computer.Computer;
-import homework_30_10_23.devices.Desktop;
-import homework_30_10_23.devices.Laptop;
-import homework_30_10_23.devices.Tablet;
+import homework_11_02_23.components.*;
+import homework_11_02_23.computer.Computer;
+import homework_11_02_23.devices.Desktop;
+import homework_11_02_23.devices.Laptop;
+import homework_11_02_23.devices.Tablet;
 
 // Main Class
 public class Main {
     public static void main(String[] args) {
         // Creating instances of CPU, GPU, RAM, Keyboard, Monitor, and Mouse
-        homework_11_02_23.components.CPU cpu = new homework_11_02_23.components.CPU("Core i7","Intel ",2.6);
-        homework_11_02_23.components.GPU gpu3080 = new homework_11_02_23.components.GPU("Nvidia RTX 3080", 12, 1710);
-        homework_11_02_23.components.GPU gpuAMD = new homework_11_02_23.components.GPU("AMD Radeon RX 7900XT", 20, 2535);
-        homework_11_02_23.components.GPU gpu4090 = new homework_11_02_23.components.GPU("Nvidia RTX 4090", 24, 2610);
-        homework_11_02_23.components.RAM ram = new homework_11_02_23.components.RAM(16);
-        homework_11_02_23.components.Keyboard keyboard = new homework_11_02_23.components.Keyboard("Mechanical");
-        homework_11_02_23.components.Monitor monitor = new homework_11_02_23.components.Monitor("27-inch 4K");
-        homework_11_02_23.components.Mouse mouse = new homework_11_02_23.components.Mouse("Wireless");
+        CPU cpu = new homework_11_02_23.components.CPU("Core i7","Intel ",2.6);
+        GPU gpu3080 = new homework_11_02_23.components.GPU("Nvidia RTX 3080", 12, 1710);
+        GPU gpuAMD = new homework_11_02_23.components.GPU("AMD Radeon RX 7900XT", 20, 2535);
+        GPU gpu4090 = new homework_11_02_23.components.GPU("Nvidia RTX 4090", 24, 2610);
+        RAM ram = new homework_11_02_23.components.RAM(16);
+        Keyboard keyboard = new homework_11_02_23.components.Keyboard("Mechanical");
+        Monitor monitor = new homework_11_02_23.components.Monitor("27-inch 4K");
+        Mouse mouse = new homework_11_02_23.components.Mouse("Wireless");
 
         // Creating instances of Desktop, Laptop, and Tablet that are subclasses of the Computer class
         Desktop desktop = new Desktop("ATX","Dell", "XPS 9000", cpu, gpuAMD, ram, keyboard, monitor, mouse);

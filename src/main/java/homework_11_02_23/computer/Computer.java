@@ -1,7 +1,6 @@
 package homework_11_02_23.computer;
 
 import homework_11_02_23.components.Mouse;
-import homework_30_10_23.components.*;
 
 // Computer Class
 public class Computer {

@@ -1,7 +1,6 @@
 package homework_11_02_23.devices;
 
 import homework_11_02_23.components.Mouse;
-import homework_30_10_23.components.*;
 import homework_11_02_23.computer.Computer;
 
 // Tablet Class
