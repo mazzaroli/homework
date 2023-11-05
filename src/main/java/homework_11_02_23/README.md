@@ -1,34 +1,29 @@
 # Homework Readme
 
-## Inheritance, Abstraction, Method Overriding, Class Object, Encapsulation (protected)
+## Extended Features: Interfaces, Final (class, method, variable), Static, Polymorphism
 
-This homework builds upon the previous task, adding specific features and requirements to be implemented.
+This extended version of the homework incorporates additional features and requirements into the existing structure.
 
 ### Requirements
 
-1. Implement polymorphism using at least one abstract class.
-2. Create and override at least one abstract method.
-3. Utilize the `protected` modifier at least 5 times.
-4. Override methods from class Object (`toString()`, `hashCode()`, `equals()`) for at least 3 classes in the hierarchy.
+1. **Interfaces**: Add 5 interfaces to the existing hierarchy.
+2. **Polymorphism**: Utilize polymorphism with the abstract class and interface from the hierarchy.
+3. **Final**: Create a final class, method, and variable.
+4. **Static**: Implement a static block, method, and variable.
 
-### Previous Homework
+### Previous Homework Overview
 
-The previous homework involved creating a class hierarchy with specific guidelines:
+The previous version of the homework included the following features:
 
-1. A hierarchy of at least 10 classes was required.
-2. All classes needed to contain properties, with a minimum of 1 property each.
-3. At least 5 private properties were to be distributed across the classes.
-4. All private variables were mandated to have corresponding getters and setters.
-5. Each class was to have at least one custom constructor.
-6. A separate class with a `main()` method was to be created, instantiating objects of the implemented classes.
+- Utilization of polymorphism with an abstract class.
+- Creation and overriding of at least one abstract method.
+- Application of the `protected` modifier at least 5 times.
+- Method overriding for the methods `toString()`, `hashCode()`, and `equals()` for at least 3 classes within the hierarchy.
 
 ### Additional Features Implemented
 
-This current iteration of the homework has added the following elements to the existing framework:
+The extended version of the homework has integrated the following elements:
 
-1. Incorporation of inheritance to establish a hierarchical relationship between classes.
-2. Utilization of abstraction to define one or more abstract classes within the hierarchy.
-3. Method overriding to redefine certain functionalities of the inherited methods.
-4. Implementation of encapsulation using the `protected` modifier for specific variables.
-
----
+- Introduction of interfaces to expand the functionality of the hierarchy.
+- Incorporation of final classes, methods, and variables to restrict further inheritance or modification.
+- Implementation of static blocks, methods, and variables to create class-level or shared functionalities.
