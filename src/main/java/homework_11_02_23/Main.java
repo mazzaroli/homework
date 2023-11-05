@@ -90,7 +90,10 @@ public class Main {
         mouse.click();
         keyboard.connect();
 
+        // Creating an 'Os' instance and displaying the operating system
+        System.out.println();
         Os os = new Os();
         os.displayOS();
+        Os.shutDown();
     }
 }
