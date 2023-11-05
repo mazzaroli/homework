@@ -1,7 +1,6 @@
 package homework_11_02_23.devices;
 
 import homework_11_02_23.components.Mouse;
-import homework_30_10_23.components.*;
 import homework_11_02_23.computer.Computer;
 
 // Desktop Class
@@ -39,7 +38,7 @@ public class Desktop extends Computer {
         System.out.print("Desktop: ");
         super.printInfo();
         // Additional info for Desktop
-        System.out.println(" Form Factor: " + this.formFactor +
+        System.out.println(" Form Factor: " + this.getFormFactor() +
                 " CPU: " + this.getCpu().getModel() +
                 ", GPU: " + this.getGpu().getModel() +
                 ", RAM: " + this.getRam().getCapacity() +
