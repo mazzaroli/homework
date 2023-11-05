@@ -18,6 +18,7 @@ public class Computer {
     public Computer(){
         setBrand("Default");
         setModel("Default");
+        setUpgradable(false);
     }
 
     // Constructor for the Computer class
