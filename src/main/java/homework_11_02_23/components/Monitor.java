@@ -1,7 +1,9 @@
 package homework_11_02_23.components;
 
+import homework_11_02_23.interfaces.Powerable;
+
 // Monitor Class
-public class Monitor {
+public class Monitor implements Powerable {
     // Field for the Monitor class
     private String type;
 
@@ -13,6 +15,16 @@ public class Monitor {
     // Constructor for Monitor with a specified type
     public Monitor(String type) {
         setType(type);
+    }
+
+    @Override
+    public void powerOn() {
+        System.out.println("The monitor is powered on.");
+    }
+
+    @Override
+    public void powerOff() {
+        System.out.println("The monitor is powered off");
     }
 
     // Override toString method to provide a meaningful string representation
