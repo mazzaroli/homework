@@ -1,7 +1,9 @@
 package homework_11_02_23.components;
 
+import homework_11_02_23.interfaces.Connectable;
+
 // Keyboard Class
-public class Keyboard {
+public class Keyboard implements Connectable {
     // Private field for the type of the keyboard
     private String type;
 
@@ -13,6 +15,12 @@ public class Keyboard {
     // Constructor for Keyboard with a specified type
     public Keyboard(String type) {
         setType(type);
+    }
+
+    @Override
+    public void connect() {
+        System.out.println("Keyboard connected.");
+        // Add connect logic for the keyboard here
     }
 
     // Getter method to retrieve the type of the keyboard
