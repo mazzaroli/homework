@@ -18,13 +18,13 @@ public class Main {
         RAM ram = new homework_11_02_23.components.RAM(16);
         Keyboard keyboard = new homework_11_02_23.components.Keyboard("Mechanical");
         Monitor monitor = new homework_11_02_23.components.Monitor("27-inch 4K");
-        Mouse mouse = new homework_11_02_23.components.Mouse("Wireless");
+        Mouse mouse = new homework_11_02_23.components.Mouse("Wireless",true);
 
         // Creating instances of Desktop, Laptop, and Tablet that are subclasses of the Computer class
-        Desktop desktop = new Desktop("ATX","Dell", "XPS 9000", cpu, gpuAMD, ram, keyboard, monitor, mouse);
-        Laptop laptop = new Laptop(48,"Lenovo", "ThinkPad X1", cpu, gpu3080, ram, keyboard, monitor, mouse);
-        Tablet tablet = new Tablet(true,"Apple", "iPad Pro", cpu, gpu4090, ram, keyboard, monitor, mouse);
-        Computer desktopPoly = new Desktop("ATX","Dell", "XPS 9000", cpu, gpuAMD, ram, keyboard, monitor, mouse);
+        Desktop desktop = new Desktop("ATX","Dell", "XPS 9000", false, cpu, gpuAMD, ram, keyboard, monitor, mouse);
+        Laptop laptop = new Laptop(48,"Lenovo", "ThinkPad X1",true,cpu, gpu3080, ram, keyboard, monitor, mouse);
+        Tablet tablet = new Tablet(true,"Apple", false,"iPad Pro", cpu, gpu4090, ram, keyboard, monitor, mouse);
+        Computer desktopPoly = new Desktop("ATX","Dell", "XPS 9000", false,cpu, gpuAMD, ram, keyboard, monitor, mouse);
 
         // Creating defaults instances of Desktop, Laptop, and Tablet
         Desktop desktopDefault = new Desktop();
@@ -78,5 +78,16 @@ public class Main {
         System.out.println(monitor.hashCode());
         System.out.println(monitor.equals(monitor));
         System.out.println(monitor.equals(cpu));
+
+        // Printing interface methods for component actions
+        System.out.print("\nPrinting interface methods for component actions:");
+        laptop.upgrade();
+        monitor.powerOn();
+        monitor.powerOff();
+        mouse.configure();
+        mouse.setConfigurable(false);
+        mouse.configure();
+        mouse.click();
+        keyboard.connect();
     }
 }
