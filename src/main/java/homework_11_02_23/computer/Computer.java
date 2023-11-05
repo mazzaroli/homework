@@ -1,18 +1,18 @@
 package homework_11_02_23.computer;
-
-import homework_11_02_23.components.Mouse;
+import homework_11_02_23.components.*;
 
 // Computer Class
 public class Computer {
     // Fields for the Computer class
     private String brand;
     private String model;
-    private homework_11_02_23.components.CPU cpu;
-    private homework_11_02_23.components.GPU gpu;
-    private homework_11_02_23.components.RAM ram;
-    private homework_11_02_23.components.Keyboard keyboard;
-    private homework_11_02_23.components.Monitor monitor;
-    private homework_11_02_23.components.Mouse mouse;
+    private boolean isUpgradable;
+    private CPU cpu;
+    private GPU gpu;
+    private RAM ram;
+    private Keyboard keyboard;
+    private Monitor monitor;
+    private Mouse mouse;
 
     // Default constructor for the Computer class
     public Computer(){
@@ -21,9 +21,10 @@ public class Computer {
     }
 
     // Constructor for the Computer class
-    public Computer(String brand, String model, homework_11_02_23.components.CPU cpu, homework_11_02_23.components.GPU gpu, homework_11_02_23.components.RAM ram, homework_11_02_23.components.Keyboard keyboard, homework_11_02_23.components.Monitor monitor, homework_11_02_23.components.Mouse mouse) {
+    public Computer(String brand, String model, boolean isUpgradable,CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
         setBrand(brand);
         setModel(model);
+        setUpgradable(isUpgradable);
         setCpu(cpu);
         setGpu(gpu);
         setRam(ram);
@@ -75,52 +76,60 @@ public class Computer {
         this.model = model;
     }
 
-    public homework_11_02_23.components.CPU getCpu() {
+    public CPU getCpu() {
         return cpu;
     }
 
-    public void setCpu(homework_11_02_23.components.CPU cpu) {
+    public void setCpu(CPU cpu) {
         this.cpu = cpu;
     }
 
-    public homework_11_02_23.components.GPU getGpu() {
+    public GPU getGpu() {
         return gpu;
     }
 
-    public void setGpu(homework_11_02_23.components.GPU gpu) {
+    public void setGpu(GPU gpu) {
         this.gpu = gpu;
     }
 
-    public homework_11_02_23.components.RAM getRam() {
+    public RAM getRam() {
         return ram;
     }
 
-    public void setRam(homework_11_02_23.components.RAM ram) {
+    public void setRam(RAM ram) {
         this.ram = ram;
     }
 
-    public homework_11_02_23.components.Keyboard getKeyboard() {
+    public Keyboard getKeyboard() {
         return keyboard;
     }
 
-    public void setKeyboard(homework_11_02_23.components.Keyboard keyboard) {
+    public void setKeyboard(Keyboard keyboard) {
         this.keyboard = keyboard;
     }
 
-    public homework_11_02_23.components.Monitor getMonitor() {
+    public Monitor getMonitor() {
         return monitor;
     }
 
-    public void setMonitor(homework_11_02_23.components.Monitor monitor) {
+    public void setMonitor(Monitor monitor) {
         this.monitor = monitor;
     }
 
-    public homework_11_02_23.components.Mouse getMouse() {
+    public Mouse getMouse() {
         return mouse;
     }
 
     public void setMouse(Mouse mouse) {
         this.mouse = mouse;
+    }
+
+    public boolean isUpgradable() {
+        return isUpgradable;
+    }
+
+    public void setUpgradable(boolean upgradable) {
+        isUpgradable = upgradable;
     }
 }
 
