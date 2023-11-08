@@ -1,12 +1,9 @@
 package homework_11_06_23.computer;
-import homework_11_02_23.components.*;
+import homework_11_06_23.components.*;
 
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 // Computer Class
 public class Computer {
-    private static final Logger LOGGER = LogManager.getLogManager().getLogger(String.valueOf(Computer.class));
 
     // Fields for the Computer class
     private String brand;

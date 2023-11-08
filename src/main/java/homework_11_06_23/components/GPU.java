@@ -1,7 +1,5 @@
 package homework_11_06_23.components;
 
-import homework_11_02_23.components.Component;
-
 // GPU Class
 public class GPU extends Component {
     // Fields for the GPU class

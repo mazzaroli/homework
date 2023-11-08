@@ -1,7 +1,7 @@
 package homework_11_06_23.devices;
 
-import homework_11_02_23.components.*;
-import homework_11_02_23.computer.Computer;
+import homework_11_06_23.components.*;
+import homework_11_06_23.computer.Computer;
 
 // Desktop Class
 public class Desktop extends Computer {

@@ -1,9 +1,9 @@
 package homework_11_06_23;
 
 //import CPU;
-import homework_11_02_23.components.*;
-import homework_11_02_23.computer.Computer;
-import homework_11_02_23.devices.*;
+import homework_11_06_23.components.*;
+import homework_11_06_23.computer.Computer;
+import homework_11_06_23.devices.*;
 
 // Main Class
 public class Main {
@@ -29,69 +29,5 @@ public class Main {
         Laptop laptopDefault = new Laptop();
         Computer tabletDefault = new Tablet();
         CPU cpuDefault = new CPU();
-
-        // Printing information about various devices and components
-        System.out.println();
-        desktop.printInfo();
-
-        System.out.println();
-        tablet.printInfo();
-
-        System.out.println();
-        laptop.printInfo();
-
-        System.out.println();
-        desktopDefault.printInfo();
-
-        System.out.println();
-        tabletDefault.printInfo();
-
-        System.out.println();
-        laptopDefault.printInfo();
-
-        System.out.println();
-        cpu.displayDetails();
-
-        System.out.println();
-        cpuDefault.displayDetails();
-
-
-        // Override methods from Computer.java
-        System.out.println("\nOverride methods from Computer.java:");
-        System.out.println(desktop.toString());
-        System.out.println(desktop.hashCode());
-        System.out.println(desktop.equals(desktopPoly));
-        System.out.println(desktop.equals(desktopDefault));
-
-        // Override methods from CPU.java
-        System.out.println("\nOverride methods from CPU.java:");
-        System.out.println(cpu.toString());
-        System.out.println(cpu.hashCode());
-        System.out.println(cpu.equals(cpu.hashCode()));
-        System.out.println(cpu.equals(cpu));
-
-        // Override methods from Monitor.java
-        System.out.println("\nOverride methods from Monitor.java:");
-        System.out.println(monitor.toString());
-        System.out.println(monitor.hashCode());
-        System.out.println(monitor.equals(monitor));
-        System.out.println(monitor.equals(cpu));
-
-        // Printing interface methods for component actions
-        System.out.print("\nPrinting interface methods for component actions:");
-        laptop.upgrade();
-        monitor.powerOn();
-        monitor.powerOff();
-        mouse.configure();
-        mouse.setConfigurable(false);
-        mouse.configure();
-        mouse.click();
-        keyboard.connect();
-
-        // Creating an 'Os' instance and displaying the operating system
-        System.out.println();
-        Os os = new Os();
-        os.displayOS();
-        Os.shutDown();
     }
 }

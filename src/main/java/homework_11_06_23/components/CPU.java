@@ -1,7 +1,5 @@
 package homework_11_06_23.components;
 
-import homework_11_02_23.components.Component;
-
 // CPU Class
 public class CPU extends Component {
     // Fields for the CPU class

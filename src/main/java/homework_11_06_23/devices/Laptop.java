@@ -1,6 +1,6 @@
 package homework_11_06_23.devices;
 
-import homework_11_02_23.components.Mouse;
+import homework_11_02_23.components.*;
 import homework_11_02_23.computer.Computer;
 import homework_11_06_23.interfaces.Upgradable;
 
@@ -13,16 +13,16 @@ public class Laptop extends Computer implements Upgradable {
     public Laptop() {
         super();
         setBatteryLifeInHours(0);
-        this.setCpu(new homework_11_02_23.components.CPU());
-        this.setGpu(new homework_11_02_23.components.GPU());
-        this.setRam(new homework_11_02_23.components.RAM());
-        this.setKeyboard(new homework_11_02_23.components.Keyboard());
-        this.setMonitor(new homework_11_02_23.components.Monitor());
-        this.setMouse(new homework_11_02_23.components.Mouse());
+        this.setCpu(new CPU());
+        this.setGpu(new GPU());
+        this.setRam(new RAM());
+        this.setKeyboard(new Keyboard());
+        this.setMonitor(new Monitor());
+        this.setMouse(new Mouse());
     }
 
     // Constructor for the Laptop class
-    public Laptop(int batteryLifeInHours, String brand, String model, boolean isUpgradable, homework_11_02_23.components.CPU cpu, homework_11_02_23.components.GPU gpu, homework_11_02_23.components.RAM ram, homework_11_02_23.components.Keyboard keyboard, homework_11_02_23.components.Monitor monitor, Mouse mouse) {
+    public Laptop(int batteryLifeInHours, String brand, String model, boolean isUpgradable, CPU cpu, GPU gpu, RAM ram, Keyboard keyboard, Monitor monitor, Mouse mouse) {
         super(brand, model, isUpgradable, cpu, gpu, ram, keyboard, monitor, mouse);
         setBatteryLifeInHours(batteryLifeInHours);
         this.setCpu(cpu);
