@@ -1,10 +1,14 @@
-package homework_11_06_23.devices;
+package devices;
 
-import homework_11_06_23.components.*;
-import homework_11_06_23.computer.Computer;
+import components.*;
+import computer.Computer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // Desktop Class
 public class Desktop extends Computer {
+    private static final Logger logger = LogManager.getLogger(Desktop.class);
+
     // Field for the Desktop class
     private String formFactor;
 
@@ -35,16 +39,18 @@ public class Desktop extends Computer {
     // Override the printInfo method to print Desktop information
     @Override
     public void printInfo() {
-        System.out.print("Desktop: ");
-        super.printInfo();
-        // Additional info for Desktop
-        System.out.println(" Form Factor: " + this.getFormFactor() +
-                " CPU: " + this.getCpu().getModel() +
-                ", GPU: " + this.getGpu().getModel() +
-                ", RAM: " + this.getRam().getCapacity() +
-                ", Keyboard: " + this.getKeyboard().getType() +
-                ", Monitor: " + this.getMonitor().getType() +
-                ", Mouse: " + this.getMouse().getType());
+        StringBuilder sb = new StringBuilder();
+        sb.append("Desktop: ").append("\n");
+        sb.append(super.toString()).append("\n");
+        sb.append("Form Factor: ").append(this.getFormFactor()).append("\n");
+        sb.append("CPU: ").append(this.getCpu().getModel()).append("\n");
+        sb.append("GPU: ").append(this.getGpu().getModel()).append("\n");
+        sb.append("RAM: ").append(this.getRam().getCapacity()).append("\n");
+        sb.append("Keyboard: ").append(this.getKeyboard().getType()).append("\n");
+        sb.append("Monitor: ").append(this.getMonitor().getType()).append("\n");
+        sb.append("Mouse: ").append(this.getMouse().getType()).append("\n");
+
+        logger.info(sb.toString());
     }
 
     // Getters and setters for formFactor
