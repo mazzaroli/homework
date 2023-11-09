@@ -1,10 +1,14 @@
-package homework_11_06_23.devices;
+package devices;
 
-import homework_11_06_23.components.*;
-import homework_11_06_23.computer.Computer;
+import components.*;
+import computer.Computer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // Tablet Class
 public class Tablet extends Computer {
+    private static final Logger logger = LogManager.getLogger(Tablet.class);
+
     // Field for the Tablet class
     private boolean hasTouchPen;
 
@@ -35,15 +39,18 @@ public class Tablet extends Computer {
     // Override the printInfo method to print Tablet information
     @Override
     public void printInfo(){
-        System.out.print("Tablet: ");
-        super.printInfo();
-        System.out.println("Touch Pen: " + this.getisHasTouchPen() +
-                " CPU: " + this.getCpu().getModel() +
-                ", GPU: " + this.getGpu().getModel() +
-                ", RAM: " + this.getRam().getCapacity() +
-                ", Keyboard: " + this.getKeyboard().getType() +
-                ", Monitor: " + this.getMonitor().getType() +
-                ", Mouse: " + this.getMouse().getType());
+        StringBuilder sb = new StringBuilder();
+        sb.append("Tablet: ").append("\n");
+        sb.append(super.toString()).append("\n");
+        sb.append("Touch Pen: ").append(this.getisHasTouchPen()).append("\n");
+        sb.append("CPU: ").append(this.getCpu().getModel()).append("\n");
+        sb.append("GPU: ").append(this.getGpu().getModel()).append("\n");
+        sb.append("RAM: ").append(this.getRam().getCapacity()).append("\n");
+        sb.append("Keyboard: ").append(this.getKeyboard().getType()).append("\n");
+        sb.append("Monitor: ").append(this.getMonitor().getType()).append("\n");
+        sb.append("Mouse: ").append(this.getMouse().getType()).append("\n");
+
+        logger.info(sb.toString());
     }
 
     // Getters and setters for HasTouchPen
