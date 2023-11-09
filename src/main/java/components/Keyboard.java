@@ -2,7 +2,7 @@ package components;
 
 import exceptions.InvalidKeyboardTypeException;
 import interfaces.Connectable;
-
+import loggers.FileLogger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,18 +19,21 @@ public class Keyboard implements Connectable {
     }
 
     // Constructor for Keyboard with a specified type
-    public Keyboard(String type) {
-        setType(type);
+    public Keyboard(String type) throws InvalidKeyboardTypeException {
+        if (!(type.equals("Mechanical") || type.equals("Membrane"))) {
+            String errorMessage = "Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed.";
+            InvalidKeyboardTypeException invalidKeyboardTypeException = new InvalidKeyboardTypeException(errorMessage);
+            FileLogger.logToFile(invalidKeyboardTypeException.getMessage());
+            LOGGER.error(invalidKeyboardTypeException.getMessage());
+            throw new InvalidKeyboardTypeException(invalidKeyboardTypeException.getMessage());
+        } else {
+            setType(type);
+        }
     }
 
     @Override
-    public void connect() throws InvalidKeyboardTypeException {
-        if (!(type.equals("Mechanical") && !getType().equals("Membrane"))) {
-            String errorMessage = "Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed.";
-            LOGGER.error(errorMessage);
-            throw new InvalidKeyboardTypeException(errorMessage);
-        }
-        LOGGER.info("Keyboard connected.");
+    public void connect() {
+        LOGGER.info("The keyboard is connected");
     }
 
     // Getter method to retrieve the type of the keyboard
