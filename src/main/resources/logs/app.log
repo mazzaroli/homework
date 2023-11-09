@@ -1,1 +1,18 @@
-[INFO ] 2023-11-08 23:48:01.247 [main] Laptop - Laptop is upgradable. Performing the upgrade...
+[INFO ] 2023-11-09 00:59:30.608 [main] Mouse - Mouse does click click click
+[INFO ] 2023-11-09 00:59:30.617 [main] Laptop - Laptop is upgradable. Performing the upgrade...
+[INFO ] 2023-11-09 00:59:30.618 [main] Mouse - Mouse is configurable. Configuring the mouse...
+[WARN ] 2023-11-09 00:59:30.618 [main] Mouse - Mouse is not configurable.
+[ERROR] 2023-11-09 00:59:30.618 [main] Mouse - Error: Mouse is not configurable.
+[INFO ] 2023-11-09 00:59:30.618 [main] Monitor - The monitor is powered on.
+[INFO ] 2023-11-09 00:59:30.618 [main] Monitor - The monitor is powered off
+[INFO ] 2023-11-09 00:59:30.619 [main] Keyboard - Keyboard connected.
+[INFO ] 2023-11-09 00:59:30.623 [main] Laptop - Laptop: 
+From Computer{ brand='Lenovo', model='ThinkPad X1', Upgradable='true' }
+Battery Life In Hours: 48
+CPU: Core i7
+GPU: Nvidia RTX 3080
+RAM: 16
+Keyboard: Fail
+Monitor: 27-inch 4K
+Mouse: Wireless
+
