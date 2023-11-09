@@ -1,8 +1,13 @@
-package homework_11_02_23.computer;
-import homework_11_02_23.components.*;
+package computer;
+import components.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 // Computer Class
 public class Computer {
+    private static final Logger logger = LogManager.getLogger(Computer.class);
+
     // Fields for the Computer class
     private String brand;
     private String model;
@@ -37,7 +42,7 @@ public class Computer {
     // Override toString method
     @Override
     public String toString() {
-        return "From Computer{ brand='" + getBrand() + "', model='" + getModel() + "' }";
+        return "From Computer{ brand='" + getBrand() + "', model='" + getModel() + "', Upgradable='" + isUpgradable()+"' }";
     }
 
     // Override hashCode method
@@ -58,7 +63,7 @@ public class Computer {
 
     // Method to print brand and model info
     public void printInfo() {
-        System.out.println(brand +" "+ model);
+        logger.info(brand + " " + model);
     }
 
     public String getBrand() {
@@ -133,7 +138,3 @@ public class Computer {
         isUpgradable = upgradable;
     }
 }
-
-
-
-
