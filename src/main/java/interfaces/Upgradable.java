@@ -1,4 +1,4 @@
-package homework_11_06_23.interfaces;
+package interfaces;
 
 // Used in devices.Laptop
 public interface Upgradable {
