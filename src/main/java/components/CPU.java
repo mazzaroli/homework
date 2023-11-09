@@ -1,7 +1,13 @@
-package homework_10_30_23.components;
+package components;
+
+import exceptions.NoGhzException;
+import loggers.FileLogger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // CPU Class
 public class CPU extends Component {
+    private final static Logger LOGGER = LogManager.getLogger(CPU.class);
     // Fields for the CPU class
     protected String manufacturer;
     protected double speed;
@@ -13,19 +19,29 @@ public class CPU extends Component {
     }
 
     // Constructor for the CPU class with specified attributes
-    public CPU(String model, String manufacturer, double speed) {
+    public CPU(String model, String manufacturer, double speed) throws NoGhzException {
         super(model);
         setManufacturer(manufacturer);
-        setSpeed(speed);
+
+        if (speed == 0) {
+            NoGhzException ghzException = new NoGhzException("The ghz is 0, it cannot be 0");
+            FileLogger.logToFile(ghzException.getMessage());
+            LOGGER.error(ghzException.getMessage());
+            throw new NoGhzException(ghzException.getMessage());
+        } else {
+            setSpeed(speed);
+        }
     }
 
     // Method to display CPU details
     @Override
     public void displayDetails() {
-        System.out.println("CPU Details:");
-        System.out.println("Model: " + getModel());
-        System.out.println("Manufacturer: " + getManufacturer());
-        System.out.println("Speed: " + getSpeed() + " GHz");
+        StringBuilder sb = new StringBuilder();
+        sb.append("CPU Details:\n")
+                .append("Model: ").append(getModel()).append("\n")
+                .append("Manufacturer: ").append(getManufacturer()).append("\n")
+                .append("Speed: ").append(getSpeed()).append(" GHz");
+        LOGGER.info(sb);
     }
 
     // Override toString method
