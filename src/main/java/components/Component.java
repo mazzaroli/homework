@@ -1,4 +1,4 @@
-package homework_11_06_23.components;
+package components;
 
 // This is the abstract class for computer components
 public abstract class Component {
