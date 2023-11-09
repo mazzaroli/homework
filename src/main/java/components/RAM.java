@@ -1,4 +1,4 @@
-package homework_11_06_23.components;
+package components;
 
 // RAM Class
 public class RAM {
