@@ -1,11 +1,15 @@
-package homework_11_06_23.devices;
+package devices;
 
-import homework_11_02_23.components.*;
-import homework_11_02_23.computer.Computer;
-import homework_11_06_23.interfaces.Upgradable;
+import components.*;
+import computer.Computer;
+import interfaces.Upgradable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // Laptop Class
 public class Laptop extends Computer implements Upgradable {
+    private static final Logger logger = LogManager.getLogger(Laptop.class);
+
     // Field for the Laptop class
     private int batteryLifeInHours;
 
@@ -36,28 +40,32 @@ public class Laptop extends Computer implements Upgradable {
     // Override the printInfo method to print Laptop information
     @Override
     public void printInfo() {
-        System.out.print("Laptop: ");
-        super.printInfo();
-        // Additional info for Laptop
-        System.out.println(" Battery Life In Hours: " + getBatteryLifeInHours() +
-                " CPU: " + this.getCpu().getModel() +
-                ", GPU: " + this.getGpu().getModel() +
-                ", RAM: " + this.getRam().getCapacity() +
-                ", Keyboard: " + this.getKeyboard().getType() +
-                ", Monitor: " + this.getMonitor().getType() +
-                ", Mouse: " + this.getMouse().getType());
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Laptop: ").append("\n");
+        sb.append(super.toString()).append("\n");
+        sb.append("Battery Life In Hours: ").append(getBatteryLifeInHours()).append("\n");
+        sb.append("CPU: ").append(this.getCpu().getModel()).append("\n");
+        sb.append("GPU: ").append(this.getGpu().getModel()).append("\n");
+        sb.append("RAM: ").append(this.getRam().getCapacity()).append("\n");
+        sb.append("Keyboard: ").append(this.getKeyboard().getType()).append("\n");
+        sb.append("Monitor: ").append(this.getMonitor().getType()).append("\n");
+        sb.append("Mouse: ").append(this.getMouse().getType()).append("\n");
+
+        logger.info(sb.toString());
+
     }
 
     // Check if the device is upgradable and perform the upgrade if possible; otherwise, indicate that it is not upgradable
     @Override
     public void upgrade() {
         if (super.isUpgradable()) {
-            System.out.println("\nLaptop is upgradable. Performing the upgrade...");
-            // Add upgrade logic here
+            logger.info("Laptop is upgradable. Performing the upgrade...");
         } else {
-            System.out.println("\nLaptop is not upgradable.");
+            logger.info("Laptop is not upgradable.");
         }
     }
+
 
     // Getter method for BatteryLifeInHours
     public int getBatteryLifeInHours() {
