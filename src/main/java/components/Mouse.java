@@ -19,24 +19,23 @@ public class Mouse implements Configurable, Clickable {
     }
 
     // Constructor for Mouse
-    public Mouse(String type, boolean isConfigurable) {
+    public Mouse(String type, boolean isConfigurable) throws MouseNotConfigurableException {
         setType(type);
         setConfigurable(isConfigurable);
+        if (!isConfigurable) {
+            throw new MouseNotConfigurableException("Mouse is not configurable");
+        } else {
+            logger.info("Mouse is configurable");
+        }
     }
 
     @Override
     public void configure() {
-        try {
-            if (getIsConfigurable()) {
-                logger.info("Mouse is configurable. Configuring the mouse...");
-                // Add configuration logic here
-            } else {
-                logger.warn("Mouse is not configurable.");
-                throw new MouseNotConfigurableException("Mouse is not configurable.");
-            }
-        } catch (MouseNotConfigurableException e) {
-            logger.error("Error: " + e.getMessage());
-            // You can also handle the exception further or log it here
+        if (isConfigurable) {
+            // Add your configuration logic here
+            logger.info("Mouse is configured with default settings");
+        } else {
+            logger.info("Mouse cannot be configured");
         }
     }
 
