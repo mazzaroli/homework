@@ -1,31 +1,49 @@
-package homework_11_02_23.components;
+package components;
 
-import homework_11_02_23.interfaces.Powerable;
+import exceptions.MonitorAlreadyOffException;
+import exceptions.MonitorAlreadyOnException;
+import interfaces.Powerable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // Monitor Class
 public class Monitor implements Powerable {
+    private static final Logger LOGGER = LogManager.getLogger(Monitor.class);
+
     // Field for the Monitor class
     private String type;
+    private boolean isPoweredOn;
 
     // Default constructor for Monitor, setting the type to "Default"
     public Monitor() {
         setType("Default");
+
     }
 
     // Constructor for Monitor with a specified type
-    public Monitor(String type) {
+    public Monitor(String type, boolean isPoweredOn) {
         setType(type);
+        setPoweredOn(isPoweredOn);
     }
 
     @Override
-    public void powerOn() {
-        System.out.println("The monitor is powered on.");
+    public void powerOn() throws MonitorAlreadyOnException {
+        if (isPoweredOn) {
+            throw new MonitorAlreadyOnException("Monitor is already powered on.");
+        }
+        isPoweredOn = true;
+        LOGGER.info("The monitor is powered on.");
     }
 
     @Override
-    public void powerOff() {
-        System.out.println("The monitor is powered off");
+    public void powerOff() throws MonitorAlreadyOffException {
+        if (!isPoweredOn) {
+            throw new MonitorAlreadyOffException("Monitor is already powered off.");
+        }
+        isPoweredOn = false;
+        LOGGER.info("The monitor is powered off");
     }
+
 
     // Override toString method to provide a meaningful string representation
     @Override
@@ -56,5 +74,13 @@ public class Monitor implements Powerable {
     // Setter method to set the type of the monitor
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isPoweredOn() {
+        return isPoweredOn;
+    }
+
+    public void setPoweredOn(boolean poweredOn) {
+        isPoweredOn = poweredOn;
     }
 }
