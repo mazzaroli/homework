@@ -20,7 +20,6 @@ public class Main {
         Keyboard keyboard = new Keyboard("Mechanical");
         Monitor monitor = new Monitor("27-inch 4K", false);
         Mouse mouse = new Mouse("Wireless",true);
-        Mouse mouse1 = new Mouse("Wireless",false);
 
         // Creating instances of Desktop, Laptop, and Tablet that are subclasses of the Computer class
         Desktop desktop = new Desktop("ATX","Dell", "XPS 9000", false, cpu, gpuAMD, ram, keyboard, monitor, mouse);
@@ -33,6 +32,30 @@ public class Main {
         Laptop laptopDefault = new Laptop();
         Computer tabletDefault = new Tablet();
 
-        laptop.upgrade();
+        mouse.click(); // [INFO ] 2023-11-09 00:54:56.741 [main] Mouse - Mouse does click click click
+        laptop.upgrade(); // [INFO ] 2023-11-09 00:54:56.747 [main] Laptop - Laptop is upgradable. Performing the upgrade...
+
+        mouse.configure(); // [INFO ] 2023-11-09 00:55:19.739 [main] Mouse - Mouse is configurable. Configuring the mouse...
+        mouse.setConfigurable(false); // Mouse use a try catch
+        mouse.configure(); // [ERROR] 2023-11-09 00:57:49.453 [main] Mouse - Error: Mouse is not configurable.
+
+        monitor.powerOn(); // [INFO ] 2023-11-09 00:55:46.951 [main] Monitor - The monitor is powered on.
+        monitor.powerOff(); // [INFO ] 2023-11-09 00:55:46.951 [main] Monitor - The monitor is powered off
+        // monitor.powerOff(); // Exception in thread "main" exceptions.MonitorAlreadyOffException: Monitor is already powered off.
+        keyboard.connect(); // [INFO ] 2023-11-09 00:56:45.169 [main] Keyboard - Keyboard connected.
+        keyboard.setType("Fail");
+        // keyboard.connect(); // Exception in thread "main" exceptions.InvalidKeyboardTypeException: Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed.
+
+        laptop.printInfo();
+        /*[INFO ] 2023-11-09 00:58:48.555 [main] Laptop - Laptop:
+            From Computer{ brand='Lenovo', model='ThinkPad X1', Upgradable='true' }
+            Battery Life In Hours: 48
+            CPU: Core i7
+            GPU: Nvidia RTX 3080
+            RAM: 16
+            Keyboard: Fail
+            Monitor: 27-inch 4K
+            Mouse: Wireless
+            */
     }
 }
