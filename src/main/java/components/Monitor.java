@@ -22,15 +22,17 @@ public class Monitor implements Powerable {
 
     // Constructor for Monitor with a specified type
     public Monitor(String type, boolean isPoweredOn) throws MonitorAlreadyOffException, MonitorAlreadyOnException{
+        // Setting the type of the monitor
         setType(type);
         try {
+            // Attempting to set the monitor's power state
             setPoweredOn(isPoweredOn);
         } catch (MonitorAlreadyOnException e) {
-            // Manejo de la excepción si el monitor ya está encendido
-            System.out.println("El monitor ya está encendido.");
+            // Handling the exception if the monitor is already powered on
+            System.out.println("The monitor is already powered on.");
         } catch (MonitorAlreadyOffException e) {
-            // Manejo de la excepción si el monitor ya está apagado
-            System.out.println("El monitor ya está apagado.");
+            // Handling the exception if the monitor is already powered off
+            System.out.println("The monitor is already powered off.");
         }
     }
 
