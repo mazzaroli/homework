@@ -21,24 +21,32 @@ public class Monitor implements Powerable {
     }
 
     // Constructor for Monitor with a specified type
-    public Monitor(String type, boolean isPoweredOn) {
+    public Monitor(String type, boolean isPoweredOn) throws MonitorAlreadyOffException, MonitorAlreadyOnException{
         setType(type);
-        setPoweredOn(isPoweredOn);
+        try {
+            setPoweredOn(isPoweredOn);
+        } catch (MonitorAlreadyOnException e) {
+            // Manejo de la excepción si el monitor ya está encendido
+            System.out.println("El monitor ya está encendido.");
+        } catch (MonitorAlreadyOffException e) {
+            // Manejo de la excepción si el monitor ya está apagado
+            System.out.println("El monitor ya está apagado.");
+        }
     }
 
     @Override
-    public void powerOn() throws MonitorAlreadyOnException {
+    public void powerOn() {
         if (isPoweredOn) {
-            throw new MonitorAlreadyOnException("Monitor is already powered on.");
+            LOGGER.warn("Monitor is already powered on.");
         }
         isPoweredOn = true;
         LOGGER.info("The monitor is powered on.");
     }
 
     @Override
-    public void powerOff() throws MonitorAlreadyOffException {
+    public void powerOff() {
         if (!isPoweredOn) {
-            throw new MonitorAlreadyOffException("Monitor is already powered off.");
+            LOGGER.warn("Monitor is already powered off.");
         }
         isPoweredOn = false;
         LOGGER.info("The monitor is powered off");
@@ -80,7 +88,13 @@ public class Monitor implements Powerable {
         return isPoweredOn;
     }
 
-    public void setPoweredOn(boolean poweredOn) {
-        isPoweredOn = poweredOn;
+    public void setPoweredOn(boolean poweredOn) throws MonitorAlreadyOnException, MonitorAlreadyOffException {
+        if (poweredOn && isPoweredOn) {
+            throw new MonitorAlreadyOnException("The monitor is already powered on.");
+        } else if (!poweredOn && !isPoweredOn) {
+            throw new MonitorAlreadyOffException("The monitor is already powered off.");
+        } else {
+            this.isPoweredOn = poweredOn;
+        }
     }
 }
