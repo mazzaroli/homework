@@ -1,7 +1,12 @@
-package homework_10_30_23.components;
+package components;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // GPU Class
 public class GPU extends Component {
+    private static final Logger logger = LogManager.getLogger(GPU.class);
+
     // Fields for the GPU class
     protected int memory;
     protected int boostClock;
@@ -22,10 +27,12 @@ public class GPU extends Component {
     // Method to display GPU details
     @Override
     public void displayDetails() {
-        System.out.println("GPU Details:");
-        System.out.println("Model: " + getModel());
-        System.out.println("Video Memory: " + getMemory() + "GB");
-        System.out.println("Boost Clock: " + getBoostClock() + " MHz");
+        StringBuilder sb = new StringBuilder();
+        sb.append("GPU Details:\n");
+        sb.append("Model: ").append(getModel()).append("\n");
+        sb.append("Video Memory: ").append(getMemory()).append("GB\n");
+        sb.append("Boost Clock: ").append(getBoostClock()).append(" MHz");
+        logger.info(sb.toString());
     }
 
     // Getter method for Memory
