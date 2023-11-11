@@ -6,3 +6,4 @@ The ghz is 0, it cannot be 0
 The ghz is 0, it cannot be 0
 The ghz is 0, it cannot be 0
 Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed.
+Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed.
