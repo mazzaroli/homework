@@ -20,9 +20,9 @@ public class Keyboard implements Connectable {
 
     // Constructor for Keyboard with a specified type
     public Keyboard(String type) throws InvalidKeyboardTypeException {
-        if (!(type.equals("Mechanical") || type.equals("Membrane"))) {
-            String errorMessage = "Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed.";
-            InvalidKeyboardTypeException invalidKeyboardTypeException = new InvalidKeyboardTypeException(errorMessage);
+        if (!(type.equals("Mechanical") || type.equals("Membrane")) ) {
+            String errorMessage = "Invalid keyboard type. Only Mechanical or Membrane keyboards are allowed. \nYou give: ";
+            InvalidKeyboardTypeException invalidKeyboardTypeException = new InvalidKeyboardTypeException(errorMessage + type);
             FileLogger.logToFile(invalidKeyboardTypeException.getMessage());
             LOGGER.error(invalidKeyboardTypeException.getMessage());
             throw new InvalidKeyboardTypeException(invalidKeyboardTypeException.getMessage());
