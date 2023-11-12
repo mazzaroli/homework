@@ -1,45 +1,55 @@
 // Importing necessary components and exceptions
+import collections.ComputerInventoryManager;
 import components.*;
+import devices.Laptop;
 import exceptions.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // Main Class
 public class Main {
-    public static void main(String[] args)  {
-        // Creating instances of CPU, GPU, RAM, Keyboard, Monitor, and Mouse
-        CPU cpu = null;
-        try {
-            // Creating a CPU instance with model "Core i7", manufacturer "Intel", and 1 GHz
-            cpu = new CPU("Core i7", "Intel", 1);
-        } catch (NoGhzException e) {
-            // Handling the exception if GHz value is not provided
-            throw new RuntimeException(e);
-        }
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
-        Keyboard keyboard = null;
-        try {
-            // Creating a Keyboard instance with type "Mechanical"
-            keyboard = new Keyboard("Mechanical");
-        } catch (InvalidKeyboardTypeException e) {
-            // Handling the exception if an invalid keyboard type is provided
-            throw new RuntimeException(e);
-        }
+    public static void main(String[] args) throws NoGhzException, InvalidKeyboardTypeException,
+            MonitorAlreadyOnException, MonitorAlreadyOffException, MouseNotConfigurableException {
+        // Create an instance of ComputerInventoryManager
+        ComputerInventoryManager inventoryManager = new ComputerInventoryManager();
 
-        Monitor monitor = null;
-        try {
-            // Creating a Monitor instance with specifications "27-inch 4K" and initially turned off
-            monitor = new Monitor("27-inch 4K", true);
-        } catch (MonitorAlreadyOffException | MonitorAlreadyOnException e) {
-            // Handling the exceptions if the monitor is already off or on
-            throw new RuntimeException(e);
-        }
+        // Additional laptops for each brand
+        Laptop macBookM1 = new Laptop(10, "Apple", "MacBook M1", true,new CPU("Apple M1", "Apple", 3.2), new GPU("Integrated Apple GPU", 8, 1600),new RAM(8), new Keyboard("Membrane"), new Monitor("Retina Display", true),new Mouse("Trackpad", true));
 
-        Mouse mouse = null;
-        try {
-            // Creating a Mouse instance with type "Wireless" and initially configured as true
-            mouse = new Mouse("Wireless", true);
-        } catch (MouseNotConfigurableException e) {
-            // Handling the exception if the mouse configuration is not valid
-            throw new RuntimeException(e);
-        }
+        Laptop macBookM2 = new Laptop(11, "Apple", "MacBook M2", true,new CPU("Apple M2", "Apple", 3.5), new GPU("Integrated Apple Pro GPU", 16, 2000),new RAM(16), new Keyboard("Membrane"), new Monitor("Pro Retina Display", true),new Mouse("Magic Trackpad", true));
+
+        // Addresses of branches
+        String nisseiAsuncion = "Nissei Asunción: Avenida. España 1261";
+        String ryrChaco = "RyR Computación: Santiago del Estero 414";
+
+        // Add to stock
+        inventoryManager.addToStock(macBookM1, nisseiAsuncion, 10);
+        inventoryManager.addToStock(macBookM2, nisseiAsuncion, 20);
+
+        inventoryManager.addToStock(macBookM1, ryrChaco, 30);
+        inventoryManager.addToStock(macBookM2, ryrChaco, 40);
+
+        // Update stock
+        inventoryManager.updateStock(macBookM1, nisseiAsuncion, 5);
+
+        // Display inventory by branch
+        inventoryManager.displayInventoryByBranch();
+
+        // Display inventory by brand and model
+        inventoryManager.displayInventoryByBrandAndModel("Apple");
+        inventoryManager.displayInventoryByBrandAndModel("Apple");
+
+        // Get stock
+        int stock = inventoryManager.getStock(macBookM1, nisseiAsuncion);
+        logger.info("Stock of MacBook M1 in Nissei Asunción: " + stock);
+
+        // Delete from stock
+        inventoryManager.deleteFromStock(macBookM1, nisseiAsuncion, 3);
+
+        // Display inventory by branch after deletion
+        inventoryManager.displayInventoryByBranch();
+
     }
 }
