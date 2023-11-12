@@ -1,1 +1,46 @@
-[INFO ] 2023-11-11 10:28:38.878 [main] Mouse - Mouse is configurable
+[INFO ] 2023-11-11 17:05:19.210 [main] ComputerInventoryManager - 10 Apple MacBook M1 added to branch Nissei Asunción: Avenida. España 1261
+[INFO ] 2023-11-11 17:05:19.216 [main] ComputerInventoryManager - 20 Apple MacBook M2 added to branch Nissei Asunción: Avenida. España 1261
+[INFO ] 2023-11-11 17:05:19.216 [main] ComputerInventoryManager - 30 Apple MacBook M1 added to branch RyR Computación: Santiago del Estero 414
+[INFO ] 2023-11-11 17:05:19.216 [main] ComputerInventoryManager - 40 Apple MacBook M2 added to branch RyR Computación: Santiago del Estero 414
+[INFO ] 2023-11-11 17:05:19.224 [main] ComputerInventoryManager - Stock updated for computer Apple MacBook M1 in branch Nissei Asunción: Avenida. España 1261. New quantity: 5
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - Inventory of branch RyR Computación: Santiago del Estero 414:
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - -> 40 units of computer brand Apple and model MacBook M2
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - -> 30 units of computer brand Apple and model MacBook M1
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.225 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida. España 1261:
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - -> 20 units of computer brand Apple and model MacBook M2
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - -> 5 units of computer brand Apple and model MacBook M1
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.226 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - -> 120 units of model MacBook M2
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - -> 70 units of model MacBook M1
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - Finished displayInventoryByBrandAndModel for brand Apple.
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - -> 120 units of model MacBook M2
+[INFO ] 2023-11-11 17:05:19.227 [main] ComputerInventoryManager - -> 70 units of model MacBook M1
+[INFO ] 2023-11-11 17:05:19.228 [main] ComputerInventoryManager - Finished displayInventoryByBrandAndModel for brand Apple.
+[INFO ] 2023-11-11 17:05:19.228 [main] ComputerInventoryManager - Stock of Apple MacBook M1 in Nissei Asunción: Avenida. España 1261: 5
+[INFO ] 2023-11-11 17:05:19.228 [main] Main - Stock of MacBook M1 in Nissei Asunción: 5
+[INFO ] 2023-11-11 17:05:19.228 [main] ComputerInventoryManager - Computer Apple MacBook M1 removed from branch Nissei Asunción: Avenida. España 1261. Quantity removed: 3. Remaining stock: 2
+[INFO ] 2023-11-11 17:05:19.228 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.228 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - Inventory of branch RyR Computación: Santiago del Estero 414:
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - -> 40 units of computer brand Apple and model MacBook M2
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - -> 30 units of computer brand Apple and model MacBook M1
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida. España 1261:
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - -> 20 units of computer brand Apple and model MacBook M2
+[INFO ] 2023-11-11 17:05:19.229 [main] ComputerInventoryManager - -> 2 units of computer brand Apple and model MacBook M1
+[INFO ] 2023-11-11 17:05:19.230 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-11 17:05:19.230 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
