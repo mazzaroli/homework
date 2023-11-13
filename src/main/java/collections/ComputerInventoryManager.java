@@ -14,41 +14,27 @@ public class ComputerInventoryManager {
     private static final Logger logger = LogManager.getLogger(collections.ComputerInventoryManager.class);
 
     // Data structures for managing the inventory
-    private final Map<String, Map<Computer, Integer>> inventoryByBranch;
-    private final List<Computer> computers;
-    private final Set<String> brands;
-    private final Map<String, List<Computer>> computersByBrand;
-    private final Map<String, Integer> stockQuantities;
-    private final Map<String, Set<Computer>> uniqueComputersByBranch;
+    private final Map<String, Map<Computer, Integer>> inventoryByBranch = new HashMap<>();
+    private final List<Computer> computers = new ArrayList<>();
+    private final Set<String> brands = new HashSet<>();
+    private final Map<String, List<Computer>> computersByBrand = new HashMap<>();
+    private final Map<String, Integer> stockQuantities = new HashMap<>();
+    private final Map<String, Set<Computer>> uniqueComputersByBranch = new HashMap<>();
 
     // Constructor to initialize data structures
     public ComputerInventoryManager() {
         // Initialize data structures
-        this.inventoryByBranch = new HashMap<>();
-        this.computers = new ArrayList<>();
-        this.brands = new HashSet<>();
-        this.computersByBrand = new HashMap<>();
-        this.stockQuantities = new HashMap<>();
-        this.uniqueComputersByBranch = new HashMap<>();
     }
 
-    // Method to add a computer to the stock
+    /**
+     * Method to add computers to the inventory.
+     * Updates various collections to reflect the addition of a computer to the stock.
+     * Logs information about the addition.
+     */
     public void addToStock(Computer computer, String branch, int quantity) {
-        // Check if the computer object is null
-        if (computer == null) {
-            logger.error("Computer is null. Cannot proceed.");
-            return;
-        }
-
-        // Check if branch is null or empty
-        if (branch == null || branch.isEmpty()) {
+        if (computer == null || branch == null || branch.isEmpty() || quantity <= 0) {
+            // Log an error if parameters are invalid
             logger.error("Invalid parameters. Cannot add the computer to the inventory.");
-            return;
-        }
-
-        // Check if quantity is greater than 0
-        if (quantity <= 0) {
-            logger.error("Invalid parameters. Quantity must be greater than 0.");
             return;
         }
 
@@ -74,24 +60,14 @@ public class ComputerInventoryManager {
         logger.info(quantity + " " + computer.getBrand() + " " + computer.getModel() + " added to branch " + branch);
     }
 
-
-    // Method to update the stock of a computer
+    /**
+     * Method to update the stock of a computer in a specific branch.
+     * Updates the branch inventory, stock quantities, and logs information about the update.
+     */
     public void updateStock(Computer computer, String branch, int newQuantity) {
-        // Check if the computer object is null
-        if (computer == null) {
-            logger.error("Computer is null. Cannot proceed.");
-            return;
-        }
-
-        // Check if branch is null or empty
-        if (branch == null || branch.isEmpty()) {
+        if (computer == null || branch == null || branch.isEmpty() || newQuantity < 0) {
+            // Log an error if parameters are invalid
             logger.error("Invalid parameters. Cannot update the stock.");
-            return;
-        }
-
-        // Check if new quantity is less than 0
-        if (newQuantity < 0) {
-            logger.error("Invalid parameters. Quantity must be greater than or equal to 0.");
             return;
         }
 
@@ -118,7 +94,10 @@ public class ComputerInventoryManager {
         }
     }
 
-    // Method to delete a specified quantity of a computer from the stock
+    /**
+     * Method to delete a specified quantity of a computer from the stock.
+     * Validates parameters, updates branch inventory, and logs information about the removal.
+     */
     public void deleteFromStock(Computer computer, String branch, int quantity) {
         // Validate parameters to ensure they are not null or empty
         if (validateParameters(computer, branch)) {
@@ -149,8 +128,10 @@ public class ComputerInventoryManager {
         }
     }
 
-
-    // Method to delete a computer from the stock based on the specified option
+    /**
+     * Method to delete a computer from the stock based on the specified option.
+     * Validates parameters, updates branch inventory, and logs information about the removal.
+     */
     public void deleteFromStock(Computer computer, String branch, String option) {
         // Validate parameters to ensure they are not null or empty
         if (validateParameters(computer, branch)) {
@@ -162,7 +143,7 @@ public class ComputerInventoryManager {
                 // Check the specified option to determine the deletion strategy
                 if ("all".equalsIgnoreCase(option)) {
                     // Remove the entire stock of the specified computer from the branch
-                    int currentStock = branchInventory.remove(computer);
+                    branchInventory.remove(computer);
 
                     // Log information about the removal of the entire stock of the computer from the branch
                     logger.info("Computer {} {} removed from branch {}. Entire stock removed. Remaining stock: 0",
@@ -181,15 +162,18 @@ public class ComputerInventoryManager {
         }
     }
 
-    // Method to validate parameters before performing operations
-    // Returns true if the computer is not null, and branch is not null or empty; otherwise, returns false
+    /**
+     * Method to validate parameters before performing operations.
+     * Returns true if the computer is not null, and branch is not null or empty; otherwise, returns false.
+     */
     private boolean validateParameters(Computer computer, String branch) {
         return computer != null && branch != null && !branch.isEmpty();
     }
 
-
-
-    // Method to retrieve the stock of a specific computer in a given branch
+    /**
+     * Method to retrieve the stock of a specific computer in a given branch.
+     * Returns the stock quantity if the computer is found, logs an error otherwise.
+     */
     public int getStock(Computer computer, String branch) {
         // Check if the computer object and branch string are not null or empty
         if (computer != null && branch != null && !branch.isEmpty()) {
@@ -222,10 +206,10 @@ public class ComputerInventoryManager {
         }
     }
 
-
-
-
-    // Method to display the inventory of computers grouped by branch
+    /**
+     * Method to display the inventory of computers grouped by branch.
+     * Logs information about the inventory for each branch.
+     */
     public void displayInventoryByBranch() {
         // Log a blank line and start message for visual separation
         logger.info("");
@@ -248,9 +232,16 @@ public class ComputerInventoryManager {
             // Log the header for the inventory of the current branch
             logger.info("Inventory of branch {}:", branch);
 
-            // Iterate through each computer entry in the branch's inventory
+            // Create a linked list to store entries for sorted output
+            CustomLinkedList<Map.Entry<Computer, Integer>> computerEntries = new CustomLinkedList<>();
+
+            // Add each entry from the branch inventory to the linked list
             for (Map.Entry<Computer, Integer> computerEntry : branchInventory.entrySet()) {
-                // Get the computer and its stock quantity
+                computerEntries.add(computerEntry);
+            }
+
+            // Iterate through the linked list for sorted output
+            for (Map.Entry<Computer, Integer> computerEntry : computerEntries) {
                 Computer computer = computerEntry.getKey();
                 int units = computerEntry.getValue();
 
@@ -267,8 +258,10 @@ public class ComputerInventoryManager {
         logger.info("Finished displayInventoryByBranch.");
     }
 
-
-    // Method to display the inventory of computers for a specific brand and count models
+    /**
+     * Method to display the inventory of computers for a specific brand and count models.
+     * Logs information about the count of each model for the specified brand.
+     */
     public void displayInventoryByBrandAndModel(String targetBrand) {
         // Log a blank line and start message for visual separation
         logger.info("");
@@ -315,16 +308,25 @@ public class ComputerInventoryManager {
                 }
             }
 
-            // Display the count of models for the specified brand
+            // Create a linked list to store entries for sorted output
+            CustomLinkedList<Map.Entry<String, Integer>> modelCountList = new CustomLinkedList<>();
+
+            // Add each entry from the model count map to the linked list
             for (Map.Entry<String, Integer> entry : modelCount.entrySet()) {
+                modelCountList.add(entry);
+            }
+
+            // Sort the linked list entries by model name
+            modelCountList.sort(Map.Entry.comparingByKey());
+
+            // Iterate through the linked list for sorted output
+            for (Map.Entry<String, Integer> entry : modelCountList) {
                 String model = entry.getKey();
                 int units = entry.getValue();
 
+                // Log information about the count of the model for the specified brand
                 logger.info("-> {} units of model {}", units, model);
             }
         }
-
-        // Log a message indicating the completion of the method
-        logger.info("Finished displayInventoryByBrandAndModel for brand {}.", targetBrand);
     }
 }
