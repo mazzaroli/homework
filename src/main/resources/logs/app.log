@@ -1,42 +1,43 @@
-[INFO ] 2023-11-14 14:16:27.000 [main] Mouse - Mouse is configurable
-[INFO ] 2023-11-14 14:16:27.019 [main] ComputerInventoryManager - 10 Apple MacBook M1 added to branch Nissei Asunción: Avenida España 1261
-[INFO ] 2023-11-14 14:16:27.020 [main] ComputerInventoryManager - 20 Apple MacBook M40 added to branch Nissei Asunción: Avenida España 1261
-[INFO ] 2023-11-14 14:16:27.020 [main] Main - Inventory by Branch:
-[INFO ] 2023-11-14 14:16:27.020 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.020 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
-[INFO ] 2023-11-14 14:16:27.020 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.025 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida España 1261:
-[INFO ] 2023-11-14 14:16:27.028 [main] ComputerInventoryManager - -> 10 units of computer brand Apple and model MacBook M1
-[INFO ] 2023-11-14 14:16:27.029 [main] ComputerInventoryManager - -> 20 units of computer brand Apple and model MacBook M40
-[INFO ] 2023-11-14 14:16:27.029 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.029 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
-[INFO ] 2023-11-14 14:16:27.029 [main] ComputerInventoryManager - Stock updated for computer Apple MacBook M1 in branch Nissei Asunción: Avenida España 1261. New quantity: 5
-[INFO ] 2023-11-14 14:16:27.029 [main] Main - Stock of MacBook M1 updated in Nissei Asunción.
-[INFO ] 2023-11-14 14:16:27.029 [main] Main - Updated Inventory by Branch:
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida España 1261:
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - -> 5 units of computer brand Apple and model MacBook M1
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - -> 20 units of computer brand Apple and model MacBook M40
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.030 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
-[INFO ] 2023-11-14 14:16:27.030 [main] Main - Inventory by Brand and Model (Apple):
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - -> 5 units of model MacBook M1
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - -> 20 units of model MacBook M40
-[INFO ] 2023-11-14 14:16:27.031 [main] ComputerInventoryManager - Stock of Apple MacBook M1 in Nissei Asunción: Avenida España 1261: 5
-[INFO ] 2023-11-14 14:16:27.032 [main] Main - Stock of MacBook M1 in Nissei Asunción: 5
-[INFO ] 2023-11-14 14:16:27.032 [main] ComputerInventoryManager - Computer Apple MacBook M1 removed from branch Nissei Asunción: Avenida España 1261. Entire stock removed. Remaining stock: 0
-[INFO ] 2023-11-14 14:16:27.032 [main] Main - MacBook M1 deleted from Nissei Asunción.
-[INFO ] 2023-11-14 14:16:27.032 [main] Main - Inventory by Branch after Deletion:
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida España 1261:
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - -> 20 units of computer brand Apple and model MacBook M40
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - 
-[INFO ] 2023-11-14 14:16:27.033 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
+[INFO ] 2023-11-15 14:53:09.708 [main] Mouse - Mouse is configurable
+[INFO ] 2023-11-15 14:53:09.715 [main] Mouse - Mouse is configurable
+[INFO ] 2023-11-15 14:53:09.720 [main] ComputerInventoryManager - 10 Apple MacBook M1 added to branch Nissei Asunción: Avenida España 1261
+[INFO ] 2023-11-15 14:53:09.720 [main] ComputerInventoryManager - 20 Apple MacBook M40 added to branch Nissei Asunción: Avenida España 1261
+[INFO ] 2023-11-15 14:53:09.721 [main] Main - Inventory by Branch:
+[INFO ] 2023-11-15 14:53:09.721 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.721 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
+[INFO ] 2023-11-15 14:53:09.721 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.730 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida España 1261:
+[INFO ] 2023-11-15 14:53:09.733 [main] ComputerInventoryManager - -> 10 units of com.solvd.computer brand Apple and model MacBook M1
+[INFO ] 2023-11-15 14:53:09.733 [main] ComputerInventoryManager - -> 20 units of com.solvd.computer brand Apple and model MacBook M40
+[INFO ] 2023-11-15 14:53:09.733 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - Stock updated for com.solvd.computer Apple MacBook M1 in branch Nissei Asunción: Avenida España 1261. New quantity: 5
+[INFO ] 2023-11-15 14:53:09.734 [main] Main - Stock of MacBook M1 updated in Nissei Asunción.
+[INFO ] 2023-11-15 14:53:09.734 [main] Main - Updated Inventory by Branch:
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida España 1261:
+[INFO ] 2023-11-15 14:53:09.734 [main] ComputerInventoryManager - -> 5 units of com.solvd.computer brand Apple and model MacBook M1
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - -> 20 units of com.solvd.computer brand Apple and model MacBook M40
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
+[INFO ] 2023-11-15 14:53:09.735 [main] Main - Inventory by Brand and Model (Apple):
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.735 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
+[INFO ] 2023-11-15 14:53:09.736 [main] ComputerInventoryManager - -> 5 units of model MacBook M1
+[INFO ] 2023-11-15 14:53:09.736 [main] ComputerInventoryManager - -> 20 units of model MacBook M40
+[INFO ] 2023-11-15 14:53:09.736 [main] ComputerInventoryManager - Stock of Apple MacBook M1 in Nissei Asunción: Avenida España 1261: 5
+[INFO ] 2023-11-15 14:53:09.737 [main] Main - Stock of MacBook M1 in Nissei Asunción: 5
+[INFO ] 2023-11-15 14:53:09.737 [main] ComputerInventoryManager - Computer Apple MacBook M1 removed from branch Nissei Asunción: Avenida España 1261. Entire stock removed. Remaining stock: 0
+[INFO ] 2023-11-15 14:53:09.737 [main] Main - MacBook M1 deleted from Nissei Asunción.
+[INFO ] 2023-11-15 14:53:09.737 [main] Main - Inventory by Branch after Deletion:
+[INFO ] 2023-11-15 14:53:09.737 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.737 [main] ComputerInventoryManager - Starting displayInventoryByBranch...
+[INFO ] 2023-11-15 14:53:09.737 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.737 [main] ComputerInventoryManager - Inventory of branch Nissei Asunción: Avenida España 1261:
+[INFO ] 2023-11-15 14:53:09.737 [main] ComputerInventoryManager - -> 20 units of com.solvd.computer brand Apple and model MacBook M40
+[INFO ] 2023-11-15 14:53:09.738 [main] ComputerInventoryManager - 
+[INFO ] 2023-11-15 14:53:09.738 [main] ComputerInventoryManager - Finished displayInventoryByBranch.
