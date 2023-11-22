@@ -10,9 +10,9 @@ public class Main {
     public static void main(String[] args){
         String inputFile = "src/main/resources/input.txt";
         String outputDirectory = "src/output";
-        String outputFileName = "output";
 
         FileProcessor fileProcessor = new FileProcessor();
-        fileProcessor.processFile(inputFile, outputDirectory,outputFileName,false);
+        fileProcessor.processFile(inputFile, outputDirectory,"output1",false);
+        fileProcessor.processFile(inputFile, outputDirectory,"output2",true);
     }
 }
