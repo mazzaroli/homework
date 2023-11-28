@@ -1,28 +1,23 @@
 # Homework Readme
 
-## Maven Project Configuration and Usage
+## File Handling and Word Count with StringUtils and FileUtils
 
-This homework involves transitioning existing projects to Maven, building a JAR file, deploying it to the local repository, incorporating plugins, and running different Maven phases to observe their outcomes.
+This homework assignment involves reading text from a file, calculating the number of unique words, and writing the result back to a file. The primary requirement is to utilize `StringUtils` and `FileUtils` to implement the solution with minimal lines of code.
 
-### Requirements
+### Task Overview
 
-1. **Maven Migration**: Move all existing projects to the Maven build system.
-2. **JAR File Creation**: Build a JAR file for the project and deploy it to the local repository.
-3. **Plugins Integration**: Include at least 2 plugins in the Maven configuration.
-4. **Maven Lifecycle Phases**: Execute the `mvn` command for various phases of the Maven lifecycle and examine the resulting outcomes.
+1. **Read Text from File**: Implement a method to read text from a file.
+2. **Calculate Unique Words**: Count the number of unique words in the text.
+3. **Write Result to File**: Write the calculated count of unique words to a file.
+4. **StringUtils and FileUtils**: Utilize methods from `StringUtils` and `FileUtils` to simplify text manipulation and file handling.
 
-### Maven Project Configuration
+### Additional Information
 
-Maven is a powerful build automation tool used primarily for Java projects. This assignment requires migrating existing projects to Maven, which involves configuring the `pom.xml` files, defining dependencies, and structuring the project according to Maven conventions.
+- **File Text Processing**: To filter out non-letter characters from the text, use the `replaceAll` method with the regex `"[^A-Za-z ]"`.
 
-### JAR File Creation and Repository Deployment
+### Implementation Guidelines
 
-Creating a JAR file using Maven is a fundamental aspect of the build process. Additionally, deploying this JAR to the local repository makes it accessible for other projects within the same environment.
-
-### Plugins Integration
-
-Plugins extend the functionality of Maven by providing additional capabilities. Incorporating at least 2 plugins into the Maven configuration will offer hands-on experience with extending Maven's capabilities beyond its default behavior.
-
-### Maven Lifecycle Phases
-
-The Maven lifecycle consists of various phases, and executing the `mvn` command for different phases provides insights into the sequence of actions and processes that Maven performs during a build.
+1. **Reading Text**: Use `FileUtils.readFileToString` method to read text from the file.
+2. **Text Cleanup**: Utilize `StringUtils.replaceAll` to remove non-letter characters from the text.
+3. **Word Count**: Employ `StringUtils.split` or similar methods to split the text into words and calculate unique word count.
+4. **Writing to File**: Use `FileUtils.writeStringToFile` to write the result back to a file.
