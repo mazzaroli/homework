@@ -1,18 +1,44 @@
-package com.solvd;// Importing necessary com.solvd.components and com.solvd.exceptions
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import com.solvd.fileProcessor.FileProcessor;
+package com.solvd;
 
-// com.solvd.Main Class
+import com.solvd.GenericFunctions.*;
+import com.solvd.enums.ComputerEnum;
+import com.solvd.functions.*;
+
 public class Main {
-    private static final Logger logger = LogManager.getLogger(Main.class);
+    public static void main(String[] args) {
+        System.out.println("// Create 5 complex Enums (with fields, methods, blocks).");
+        for (ComputerEnum computer : ComputerEnum.values()) {
+            System.out.println("Brand: " + computer.getBrand());
+            System.out.println("Model: " + computer.getModel());
+            System.out.println();
+        }
 
-    public static void main(String[] args){
-        String inputFile = "src/main/resources/input.txt";
-        String outputDirectory = "src/output";
+        //-----------------------------------------------------------------------------
+        System.out.println("// Use at least 5 lambda functions from the java.util.function package.");
+        System.out.println("Executing PredicateExample:");
+        PredicateExample.main(args);
 
-        FileProcessor fileProcessor = new FileProcessor();
-        fileProcessor.processFile(inputFile, outputDirectory,"output1",false);
-        fileProcessor.processFile(inputFile, outputDirectory,"output2",true);
+        System.out.println("\nExecuting FunctionExample:");
+        FunctionExample.main(args);
+
+        System.out.println("\nExecuting ConsumerExample:");
+        ConsumerExample.main(args);
+
+        System.out.println("\nExecuting SupplierExample:");
+        SupplierExample.main(args);
+
+        System.out.println("\nExecuting BiFunctionExample:");
+        BiFunctionExample.main(args);
+
+        //-----------------------------------------------------------------------------
+        System.out.println("\n// Create 3 custom Lambda functions with generics.");
+        System.out.println("Executing GenericConsumerExample:");
+        GenericConsumerExample.main(new String[]{});
+
+        System.out.println("\nExecuting GenericFunctionExample:");
+        GenericFunctionExample.main(new String[]{});
+
+        System.out.println("\nExecuting GenericPredicateExample:");
+        GenericPredicateExample.main(new String[]{});
     }
 }
