@@ -1,4 +1,21 @@
-[INFO ] 2023-11-22 19:45:02.534 [main] FileProcessor - Processing text from src/main/resources/input.txt to src/output
-[INFO ] 2023-11-22 19:45:02.568 [main] FileProcessor - Text processed
-[INFO ] 2023-11-22 19:45:02.568 [main] FileProcessor - Processing text from src/main/resources/input.txt to src/output
-[INFO ] 2023-11-22 19:45:02.569 [main] FileProcessor - Text processed
+[INFO ] 2023-11-30 08:43:43.819 [main] Mouse - Mouse is configurable
+[INFO ] 2023-11-30 08:43:43.829 [main] Laptop - Laptop: 
+From Computer{ brand='Apple', model='MacBook M1', Upgradable='true' }
+Battery Life In Hours: 10
+CPU: Apple M1
+GPU: Integrated Apple GPU
+RAM: 8
+Keyboard: Membrane
+Monitor: Retina Display
+Mouse: Trackpad
+
+[INFO ] 2023-11-30 08:43:43.829 [main] Laptop - Laptop: 
+From Computer{ brand='Apple', model='MacBook M1', Upgradable='true' }
+Battery Life In Hours: 10
+CPU: Apple M1
+GPU: Integrated Apple GPU
+RAM: 16
+Keyboard: Membrane
+Monitor: Retina Display
+Mouse: Trackpad
+
