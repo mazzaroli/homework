@@ -250,12 +250,6 @@ public class ComputerInventoryManager {
         logger.info("Finished displayInventoryByBranch.");
     }
 
-
-    /**
-     * Method to display the inventory of computers for a specific brand and count models.
-     * Logs information about the count of each model for the specified brand.
-     */
-
     /**
      * Method to display the inventory of computers for a specific brand and count models.
      * Logs information about the count of each model for the specified brand.
