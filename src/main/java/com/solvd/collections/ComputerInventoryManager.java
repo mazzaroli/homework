@@ -1,6 +1,7 @@
 package com.solvd.collections;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.solvd.computer.Computer;
 
@@ -211,122 +212,86 @@ public class ComputerInventoryManager {
      * Logs information about the inventory for each branch.
      */
     public void displayInventoryByBranch() {
-        // Log a blank line and start message for visual separation
+        // Log empty lines and start message for visual separation
         logger.info("");
         logger.info("Starting displayInventoryByBranch...");
         logger.info("");
 
         // Check if the inventory by branch is empty
         if (inventoryByBranch.isEmpty()) {
-            // Log a message if the inventory by branch is empty and return
             logger.info("Inventory by branch is empty.");
             return;
         }
 
         // Iterate through each entry in the inventory by branch
-        for (Map.Entry<String, Map<Computer, Integer>> entry : inventoryByBranch.entrySet()) {
-            // Get the branch and its inventory
+        inventoryByBranch.entrySet().forEach(entry -> {
+            // Get branch and its inventory
             String branch = entry.getKey();
             Map<Computer, Integer> branchInventory = entry.getValue();
 
-            // Log the header for the inventory of the current branch
+            // Log header for inventory of the current branch
             logger.info("Inventory of branch {}:", branch);
 
-            // Create a linked list to store entries for sorted output
-            CustomLinkedList<Map.Entry<Computer, Integer>> computerEntries = new CustomLinkedList<>();
+            // Stream through branch inventory entries, sorted by computer brand, and log information
+            branchInventory.entrySet().stream()
+                    .sorted(Comparator.comparing(entry2 -> entry2.getKey().getBrand()))
+                    .forEach(computerEntry -> {
+                        Computer computer = computerEntry.getKey();
+                        int units = computerEntry.getValue();
+                        logger.info("-> {} units of computer brand {} and model {}",
+                                units, computer.getBrand(), computer.getModel());
+                    });
 
-            // Add each entry from the branch inventory to the linked list
-            for (Map.Entry<Computer, Integer> computerEntry : branchInventory.entrySet()) {
-                computerEntries.add(computerEntry);
-            }
-
-            // Iterate through the linked list for sorted output
-            for (Map.Entry<Computer, Integer> computerEntry : computerEntries) {
-                Computer computer = computerEntry.getKey();
-                int units = computerEntry.getValue();
-
-                // Log information about the com.solvd.computer's stock in the current branch
-                logger.info("-> {} units of com.solvd.computer brand {} and model {}", units, computer.getBrand(),
-                        computer.getModel());
-            }
-
-            // Log a blank line after displaying the inventory of the current branch
+            // Log blank line after displaying the inventory of the current branch
             logger.info("");
-        }
+        });
 
-        // Log a message indicating the completion of the method
+        // Log message indicating completion of the method
         logger.info("Finished displayInventoryByBranch.");
     }
 
     /**
      * Method to display the inventory of computers for a specific brand and count models.
      * Logs information about the count of each model for the specified brand.
+     *
+     * @param targetBrand The brand for which the inventory and model count are displayed. For example "Apple"
      */
     public void displayInventoryByBrandAndModel(String targetBrand) {
-        // Log a blank line and start message for visual separation
+        // Logs to indicate the start of the method execution
         logger.info("");
         logger.info("Starting displayInventoryByBrandAndModel for brand {}...", targetBrand);
         logger.info("");
 
-        // Check if the list of computers is empty
+        // Checks if the list of computers is empty
         if (computers.isEmpty()) {
-            // Log a message if the com.solvd.computer list is empty and return
             logger.info("Computer list is empty.");
             return;
         }
 
-        // Check if the specified brand is present in the inventory
+        // Checks if the specified brand exists in the inventory
         if (!brands.contains(targetBrand)) {
-            // Log a message if the specified brand is not present and return
             logger.info("Brand {} is not present in the inventory.", targetBrand);
             return;
         }
 
-        // Log a header for the inventory of computers for the specified brand
+        // Logs the header for the inventory of computers for the specified brand
         logger.info("Inventory of computers for brand {}:", targetBrand);
 
-        // Get the list of computers for the specified brand
-        List<Computer> computersOfBrand = computersByBrand.get(targetBrand);
-
-        // Check if the list of computers for the brand is not null
-        if (computersOfBrand != null) {
-            // Create a map to maintain the count of models
-            Map<String, Integer> modelCount = new HashMap<>();
-
-            // Iterate through the computers of the specified brand
-            for (Computer computer : computersOfBrand) {
-                // Iterate through the inventory of each branch
-                for (Map<Computer, Integer> branchInventory : inventoryByBranch.values()) {
-                    // Check if the branch inventory contains the current com.solvd.computer
-                    if (branchInventory.containsKey(computer)) {
-                        // Get the units of the com.solvd.computer in the branch
-                        int units = branchInventory.get(computer);
-
-                        // Update the count of the model
-                        modelCount.put(computer.getModel(), modelCount.getOrDefault(computer.getModel(), 0) + units);
-                    }
-                }
-            }
-
-            // Create a linked list to store entries for sorted output
-            CustomLinkedList<Map.Entry<String, Integer>> modelCountList = new CustomLinkedList<>();
-
-            // Add each entry from the model count map to the linked list
-            for (Map.Entry<String, Integer> entry : modelCount.entrySet()) {
-                modelCountList.add(entry);
-            }
-
-            // Sort the linked list entries by model name
-            modelCountList.sort(Map.Entry.comparingByKey());
-
-            // Iterate through the linked list for sorted output
-            for (Map.Entry<String, Integer> entry : modelCountList) {
-                String model = entry.getKey();
-                int units = entry.getValue();
-
-                // Log information about the count of the model for the specified brand
-                logger.info("-> {} units of model {}", units, model);
-            }
-        }
+        // Retrieves the list of computers for the specified brand using an Optional
+        Optional.ofNullable(computersByBrand.get(targetBrand))
+                // If the list is present, stream through each computer and corresponding inventory
+                .ifPresent(computersOfBrand -> computersOfBrand.stream()
+                        .flatMap(computer -> inventoryByBranch.values().stream()
+                                // Filters the branch inventory to get entries containing the computer
+                                .filter(branchInventory -> branchInventory.containsKey(computer))
+                                // Maps to create entries of model and its count for the computer
+                                .map(branchInventory -> Map.entry(computer.getModel(), branchInventory.get(computer))))
+                        // Collects and groups the entries by model while summing up the counts
+                        .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.summingInt(Map.Entry::getValue)))
+                        // Streams through the grouped entries, sorts by model, and logs the count information
+                        .entrySet().stream()
+                        .sorted(Comparator.comparing(Map.Entry::getKey))
+                        .forEach(entry -> logger.info("-> {} units of model {}", entry.getValue(), entry.getKey()))
+                );
     }
 }

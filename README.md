@@ -1,23 +1,21 @@
 # Homework Readme
 
-## File Handling and Word Count with StringUtils and FileUtils
+## Collection Streaming and Reflection in Java
 
-This homework assignment involves reading text from a file, calculating the number of unique words, and writing the result back to a file. The primary requirement is to utilize `StringUtils` and `FileUtils` to implement the solution with minimal lines of code.
+This homework assignment involves implementing 7 collection streaming operations with terminal and non-terminal operations. Additionally, utilize reflection to extract information about fields, constructors, and methods, and demonstrate object creation and method invocation solely through reflection.
 
 ### Task Overview
 
-1. **Read Text from File**: Implement a method to read text from a file.
-2. **Calculate Unique Words**: Count the number of unique words in the text.
-3. **Write Result to File**: Write the calculated count of unique words to a file.
-4. **StringUtils and FileUtils**: Utilize methods from `StringUtils` and `FileUtils` to simplify text manipulation and file handling.
+1. **Collection Streaming**: Implement 7 streaming operations within the collection hierarchy, showcasing both terminal and non-terminal operations.
+2. **Reflection Usage**: Utilize reflection to extract information about fields, constructors, and methods from a class. Create an object and invoke a method using reflection.
 
 ### Additional Information
 
-- **File Text Processing**: To filter out non-letter characters from the text, use the `replaceAll` method with the regex `"[^A-Za-z ]"`.
+- **Collection Streaming**: Use the Stream API to perform various operations on collections, including filtering, mapping, reducing, etc. Showcase both intermediate and terminal operations.
+- **Reflection**: Reflection provides a means to inspect classes, interfaces, fields, constructors, and methods at runtime. Extract metadata and dynamically access these elements using reflection.
 
 ### Implementation Guidelines
 
-1. **Reading Text**: Use `FileUtils.readFileToString` method to read text from the file.
-2. **Text Cleanup**: Utilize `StringUtils.replaceAll` to remove non-letter characters from the text.
-3. **Word Count**: Employ `StringUtils.split` or similar methods to split the text into words and calculate unique word count.
-4. **Writing to File**: Use `FileUtils.writeStringToFile` to write the result back to a file.
+1. **Collection Streaming Operations**: Implement 7 different operations using the Stream API on collections. Include a mix of terminal and non-terminal operations to demonstrate their functionalities.
+2. **Reflection Information Extraction**: Use reflection to gather details about fields, constructors, and methods of a particular class.
+3. **Object Creation and Method Invocation via Reflection**: Dynamically create an object of a class and invoke a method solely using reflection techniques.
