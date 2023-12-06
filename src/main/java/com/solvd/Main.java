@@ -1,54 +1,55 @@
 package com.solvd;
 
-import com.solvd.collections.ComputerInventoryManager;
-import com.solvd.components.*;
-import com.solvd.computer.Computer;
-import com.solvd.devices.Laptop;
-import com.solvd.reflection.ReflectionHandler;
+import com.solvd.connectionpool.Connection;
+import com.solvd.connectionpool.ConnectionPool;
 
-import java.lang.reflect.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        // Define the size of the connection pool
+        final int poolSize = 5;
 
-        Laptop macBookM1 = new Laptop(10, "Apple", "Macbook M1", true,
-                new CPU("Apple M1", "Apple", 3.2), new GPU("Integrated Apple GPU", 8, 1600),
-                new RAM(8), new Keyboard("Membrane"), new Monitor("Retina Display", true),
-                new Mouse("Trackpad", true));
+        // Create a connection pool with the specified size
+        final ConnectionPool connectionPool = ConnectionPool.createPool(poolSize);
 
-        Laptop macBookM2 = new Laptop(11, "Apple", "Macbook M2", true,
-                new CPU("Apple M2", "Apple", 3.5), new GPU("Integrated Apple Pro GPU", 16, 2000),
-                new RAM(16), new Keyboard("Membrane"), new Monitor("Pro Retina Display", true),
-                new Mouse("Magic Trackpad", true));
+        // Create a thread pool with 7 threads
+        final ExecutorService threadPool = Executors.newFixedThreadPool(7);
 
-        String nisseiAsuncion = "Nissei Asunción: Avenida España 1261";
+        // Create 7 threads to get connections and perform work
+        for (int i = 0; i < 7; i++) {
+            threadPool.submit(() -> {
+                try {
+                    // Get a connection from the pool
+                    Connection connection = connectionPool.getConnection();
 
-        //##############################################################################
+                    // Print thread ID, thread name, and the acquired connection
+                    System.out.println(String.format("[id: %d] %s got connection: %s",
+                            Thread.currentThread().getId(),
+                            Thread.currentThread().getName(),
+                            connection));
 
-        // Using Java Reflection to work with ComputerInventoryManager class
-        Class<ComputerInventoryManager> ComputerIMClass = ComputerInventoryManager.class;
-        ComputerInventoryManager inventoryManager = new ComputerInventoryManager();
+                    // Simulate some work with the connection by sleeping for 1 second
+                    Thread.sleep(1000);
 
-        //------------------------------------------------------------
+                    // Release the connection back to the pool
+                    connectionPool.releaseConnection(connection);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            });
+        }
 
-        // Invoking a method from ReflectionHandler class to inspect methods of ComputerInventoryManager
-        ReflectionHandler.inspectMethods(ComputerInventoryManager.class);
+        // Shutdown the thread pool
+        threadPool.shutdown();
 
-        //------------------------------------------------------------
-
-        // Using Reflection to access and invoke the 'addToStock' method of ComputerInventoryManager
-        Method addToStockMethod = ComputerIMClass.getDeclaredMethod("addToStock", Computer.class, String.class, int.class);
-        addToStockMethod.setAccessible(true);
-
-        addToStockMethod.invoke(inventoryManager, macBookM1, nisseiAsuncion, 10);
-        addToStockMethod.invoke(inventoryManager, macBookM2, nisseiAsuncion, 100);
-
-        //------------------------------------------------------------
-
-        // Using Reflection to access and invoke the 'displayInventoryByBrandAndModel' method of ComputerInventoryManager
-        Method displayInventoryMethod = ComputerIMClass.getDeclaredMethod("displayInventoryByBrandAndModel", String.class);
-        displayInventoryMethod.setAccessible(true);
-        displayInventoryMethod.invoke(inventoryManager, "Apple");
-
+        try {
+            // Wait for all threads to finish
+            threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
