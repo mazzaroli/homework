@@ -1,21 +1,26 @@
 # Homework Readme
 
-## Collection Streaming and Reflection in Java
+## Threads, Connection Pool, and Thread-Safe Initialization
 
-This homework assignment involves implementing 7 collection streaming operations with terminal and non-terminal operations. Additionally, utilize reflection to extract information about fields, constructors, and methods, and demonstrate object creation and method invocation solely through reflection.
+This homework involves the creation of threads using both `Runnable` and `Thread`, building a thread-safe connection pool using collections from the `java.util.concurrent` package, and demonstrating lazy initialization of the pool. Additionally, simulate the behavior of threads loading the connection pool and using a thread pool to manage the connections.
 
 ### Task Overview
 
-1. **Collection Streaming**: Implement 7 streaming operations within the collection hierarchy, showcasing both terminal and non-terminal operations.
-2. **Reflection Usage**: Utilize reflection to extract information about fields, constructors, and methods from a class. Create an object and invoke a method using reflection.
+1. **Thread Creation**: Implement 2 threads using both `Runnable` and `Thread`.
+2. **Connection Pool**: Create a connection pool that is thread-safe and lazily initialized, using collections from `java.util.concurrent`. The `Connection` class can be mocked for simulation purposes.
+3. **Initialization with 5 Connections**: Initialize the pool with 5 connections.
+4. **Thread Loading and Usage**: Simulate 7 threads (5 threads and a thread pool of 7 threads) attempting to access the connection pool.
+    - 5 threads should successfully acquire a connection.
+    - 2 threads should wait for the next available connection.
 
 ### Additional Information
 
-- **Collection Streaming**: Use the Stream API to perform various operations on collections, including filtering, mapping, reducing, etc. Showcase both intermediate and terminal operations.
-- **Reflection**: Reflection provides a means to inspect classes, interfaces, fields, constructors, and methods at runtime. Extract metadata and dynamically access these elements using reflection.
+- **Threads Creation**: Threads can be created either by implementing the `Runnable` interface or by extending the `Thread` class.
+- **Connection Pool**: A connection pool is a collection of reusable connections. Ensure thread safety during access to the pool and lazily initialize it for efficiency.
+- **Simulation**: Mock the `Connection` class for simulating connections in the pool. Demonstrate thread behavior in acquiring and waiting for available connections.
 
 ### Implementation Guidelines
 
-1. **Collection Streaming Operations**: Implement 7 different operations using the Stream API on collections. Include a mix of terminal and non-terminal operations to demonstrate their functionalities.
-2. **Reflection Information Extraction**: Use reflection to gather details about fields, constructors, and methods of a particular class.
-3. **Object Creation and Method Invocation via Reflection**: Dynamically create an object of a class and invoke a method solely using reflection techniques.
+1. **Thread Creation**: Create 2 threads using both `Runnable` and `Thread`.
+2. **Connection Pool Implementation**: Implement the connection pool using concurrent collections (`ConcurrentLinkedQueue`, `Semaphore`, etc.) from `java.util.concurrent`.
+3. **Initialization and Loading**: Initialize the pool with 5 connections and simulate 7 threads trying to access the pool, ensuring appropriate thread synchronization and waiting for available connections.
