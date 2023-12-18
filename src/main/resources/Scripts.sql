@@ -213,6 +213,22 @@ WHERE `id` IN (1, 2, 4, 5);
 -- ####################################################################################
 -- ####################################################################################
 
+-- Query to retrieve Computer details with hardware components joined
+SELECT *
+FROM Computer AS C
+LEFT JOIN RAM AS R ON C.id = R.Computer_computer_id
+LEFT JOIN Mouse AS M ON C.id = M.Computer_computer_id
+LEFT JOIN Monitor AS MO ON C.id = MO.Computer_computer_id
+LEFT JOIN Keyboard AS K ON C.id = K.Computer_computer_id
+LEFT JOIN GPU AS G ON C.id = G.Computer_computer_id
+LEFT JOIN CPU AS CP ON C.id = CP.Computer_computer_id
+LEFT JOIN Desktop AS D ON C.id = D.Computer_id
+LEFT JOIN Laptop AS L ON C.id = L.Computer_id
+LEFT JOIN Tablet AS T ON C.id = T.Computer_id;
+
+-- ####################################################################################
+-- ####################################################################################
+
 -- Query 1: Left join Computer with RAM, Mouse, and Monitor (LEFT JOIN)
 SELECT *
 FROM Computer AS C
