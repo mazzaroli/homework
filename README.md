@@ -1,23 +1,23 @@
 # Homework Readme
 
-## Database Schema Creation using MySQL Workbench
+## SQL Statements for Database Manipulation
 
-This homework involves creating a comprehensive database schema using MySQL Workbench for a new hierarchy, comprising at least 12 tables with all relations. The schema must adhere to the three Normal Forms (1NF, 2NF, 3NF) for effective data organization and reduction of data redundancy.
+This homework involves executing SQL statements for insertion, updating, deletion, altering tables, joins, and aggregate functions on a database schema.
 
 ### Task Overview
 
-1. **Database Schema Creation**: Design and implement a database schema using MySQL Workbench, consisting of a minimum of 12 tables representing entities and their relationships.
-2. **Normalization**: Ensure the schema satisfies the three Normal Forms (1NF, 2NF, 3NF) to eliminate data redundancy and maintain data integrity.
-3. **Entity Relationships**: Establish relationships between tables using primary and foreign keys to represent the connections between different entities within the database.
-
-### Additional Information
-
-- **Database Design**: Employ MySQL Workbench to visually design and create the database schema with proper tables, columns, and relationships.
-- **Normalization Rules**: Apply normalization rules to organize data efficiently, minimize redundancy, and avoid update anomalies.
-- **Relationship Establishment**: Define appropriate relationships between tables (one-to-one, one-to-many, many-to-many) using foreign key constraints.
+1. **Insertion Statements**: Execute 10 SQL statements for inserting data into tables.
+2. **Updating Statements**: Execute 10 SQL statements for updating existing data in tables.
+3. **Deletion Statements**: Execute 10 SQL statements for deleting data from tables.
+4. **Alter Table Statements**: Execute 5 SQL statements to alter tables.
+5. **Joining All Tables**: Create a single SQL statement to join all tables in the database.
+6. **Join Statements**: Execute 5 SQL statements using left, right, inner, and outer joins.
+7. **Aggregate Functions & Group By (Without Having)**: Execute 7 SQL statements using aggregate functions and group by without having clauses.
+8. **Aggregate Functions & Group By (With Having)**: Execute 7 SQL statements using aggregate functions and group by with having clauses.
 
 ### Implementation Guidelines
 
-1. **Table Creation**: Create tables representing different entities within the hierarchy, defining columns and primary keys.
-2. **Relationship Establishment**: Establish relationships between tables by defining foreign keys referencing primary keys in related tables.
-3. **Normalization Check**: Verify that the schema design adheres to the three Normal Forms, ensuring proper data organization and integrity.
+1. **Insertion, Updating, Deletion**: Utilize `INSERT`, `UPDATE`, `DELETE` statements for data manipulation.
+2. **Alter Table**: Use `ALTER TABLE` statements to modify table structure.
+3. **Joining Tables**: Write SQL queries to join tables based on appropriate relationships.
+4. **Aggregate Functions & Group By**: Employ aggregate functions like `SUM`, `COUNT`, `MAX`, `MIN` along with `GROUP BY` clause for data summarization.
