@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GpuDAO implements IGpuDAO {
-
+    private static Logger logger = LogManager.getLogger(GpuDAO.class);
     ConnectionPool connectionPool = ConnectionPool.getInstance();
     private static final Logger LOGGER = LogManager.getLogger(GpuDAO.class);
 
@@ -42,7 +42,7 @@ public class GpuDAO implements IGpuDAO {
                 gpu.setPrice(resultSet.getDouble("price"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error retrieving Gpu entity by ID: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             closeAll(preparedStatement, resultSet);
@@ -68,14 +68,14 @@ public class GpuDAO implements IGpuDAO {
             preparedStatement.setInt(5, t.getComputer_computer_id());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error inserting Gpu entity: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             try {
                 assert preparedStatement != null;
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
@@ -96,14 +96,14 @@ public class GpuDAO implements IGpuDAO {
             preparedStatement.setInt(4, t.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error updating Gpu entity: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             try {
                 assert preparedStatement != null;
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
@@ -121,14 +121,14 @@ public class GpuDAO implements IGpuDAO {
             preparedStatement.setInt(1, t.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Error al eliminar la entidad Gpu", e);
+            logger.error("Error deleting Gpu entity: {}", e.getMessage());
         } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-                throw new RuntimeException("Error al cerrar el PreparedStatement", e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
             connectionPool.putback(connection);
         }
@@ -158,7 +158,7 @@ public class GpuDAO implements IGpuDAO {
                 list.add(gpu);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error retrieving Gpu entities: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             closeAll(preparedStatement, resultSet);
@@ -172,7 +172,7 @@ public class GpuDAO implements IGpuDAO {
             try {
                 resultSet.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing ResultSet: {}", e.getMessage());
             }
         }
 
@@ -180,7 +180,7 @@ public class GpuDAO implements IGpuDAO {
             try {
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }

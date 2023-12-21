@@ -3,6 +3,8 @@ package com.solvd.database.dao.jbdc;
 import com.solvd.database.ConnectionPool;
 import com.solvd.database.dao.ICpuDAO;
 import com.solvd.database.model.Cpu;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CpuDAO implements ICpuDAO {
+    private static final Logger logger = LogManager.getLogger(CpuDAO.class);
     ConnectionPool connectionPool = ConnectionPool.getInstance();
 
     /** Retrieves a Cpu entity from the database based on its ID.
@@ -37,7 +40,7 @@ public class CpuDAO implements ICpuDAO {
                 cpu.setComputer_computer_id(resultSet.getInt("Computer_computer_id"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error retrieving Cpu entity by ID: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             closeAll(preparedStatement, resultSet);
@@ -62,14 +65,14 @@ public class CpuDAO implements ICpuDAO {
             preparedStatement.setInt(4, t.getComputer_computer_id());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error inserting Cpu entity: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             try {
                 assert preparedStatement != null;
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
@@ -91,14 +94,14 @@ public class CpuDAO implements ICpuDAO {
             preparedStatement.setInt(5, t.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error updating Cpu entity: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             try {
                 assert preparedStatement != null;
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
@@ -116,14 +119,14 @@ public class CpuDAO implements ICpuDAO {
             preparedStatement.setInt(1, t.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Error deleting Cpu entity", e);
+            logger.error("Error deleting Cpu entity: {}", e.getMessage());
         } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-                throw new RuntimeException("Error closing PreparedStatement", e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
             connectionPool.putback(connection);
         }
@@ -152,7 +155,7 @@ public class CpuDAO implements ICpuDAO {
                 list.add(cpu);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error retrieving Cpu entities: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             closeAll(preparedStatement, resultSet);
@@ -165,7 +168,7 @@ public class CpuDAO implements ICpuDAO {
             try {
                 resultSet.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing ResultSet: {}", e.getMessage());
             }
         }
 
@@ -173,7 +176,7 @@ public class CpuDAO implements ICpuDAO {
             try {
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }

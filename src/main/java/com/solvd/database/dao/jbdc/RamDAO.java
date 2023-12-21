@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RamDAO implements IRamDAO {
-
+    private static Logger logger = LogManager.getLogger(RamDAO.class);
     ConnectionPool connectionPool = ConnectionPool.getInstance();
     private static final Logger LOGGER = LogManager.getLogger(RamDAO.class);
 
@@ -39,7 +39,7 @@ public class RamDAO implements IRamDAO {
                 ram.setComputer_computer_id(resultSet.getInt("Computer_computer_id"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error retrieving Ram entity by ID: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             closeAll(preparedStatement, resultSet);
@@ -62,14 +62,14 @@ public class RamDAO implements IRamDAO {
             preparedStatement.setInt(2, t.getComputer_computer_id());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error inserting Ram entity: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             try {
                 assert preparedStatement != null;
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
@@ -89,14 +89,14 @@ public class RamDAO implements IRamDAO {
             preparedStatement.setInt(3, t.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error updating Ram entity: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             try {
                 assert preparedStatement != null;
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
@@ -114,14 +114,14 @@ public class RamDAO implements IRamDAO {
             preparedStatement.setInt(1, t.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Error al eliminar la entidad RAM", e);
+            logger.error("Error deleting Ram entity: {}", e.getMessage());
         } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-                throw new RuntimeException("Error al cerrar el PreparedStatement", e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
             connectionPool.putback(connection);
         }
@@ -148,7 +148,7 @@ public class RamDAO implements IRamDAO {
                 list.add(ram);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.error("Error retrieving Ram entities: {}", e.getMessage());
         } finally {
             connectionPool.putback(connection);
             closeAll(preparedStatement, resultSet);
@@ -161,7 +161,7 @@ public class RamDAO implements IRamDAO {
             try {
                 resultSet.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing ResultSet: {}", e.getMessage());
             }
         }
 
@@ -169,7 +169,7 @@ public class RamDAO implements IRamDAO {
             try {
                 preparedStatement.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.error("Error closing PreparedStatement: {}", e.getMessage());
             }
         }
     }
