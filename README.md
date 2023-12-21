@@ -1,23 +1,21 @@
 # Homework Readme
 
-## SQL Statements for Database Manipulation
+## Database Schema Creation with DAO Implementation and Service Layer Abstraction
 
-This homework involves executing SQL statements for insertion, updating, deletion, altering tables, joins, and aggregate functions on a database schema.
+This homework task involves building a schema hierarchy based on a provided course and creating Data Access Object (DAO) classes with interfaces, abstract classes, and Generics. The DAO classes should be designed to be scalable and flexible to support different frameworks and databases. All CRUD (Create, Read, Update, Delete) operations must be implemented using JDBC, utilizing a connection pool from the provided block. Additionally, implement a Service layer with suitable abstractions to enable switching between databases and frameworks.
 
 ### Task Overview
 
-1. **Insertion Statements**: Execute 10 SQL statements for inserting data into tables.
-2. **Updating Statements**: Execute 10 SQL statements for updating existing data in tables.
-3. **Deletion Statements**: Execute 10 SQL statements for deleting data from tables.
-4. **Alter Table Statements**: Execute 5 SQL statements to alter tables.
-5. **Joining All Tables**: Create a single SQL statement to join all tables in the database.
-6. **Join Statements**: Execute 5 SQL statements using left, right, inner, and outer joins.
-7. **Aggregate Functions & Group By (Without Having)**: Execute 7 SQL statements using aggregate functions and group by without having clauses.
-8. **Aggregate Functions & Group By (With Having)**: Execute 7 SQL statements using aggregate functions and group by with having clauses.
+1. **Schema Hierarchy Building**: Create a database schema hierarchy based on the course specifications.
+2. **DAO Implementation**: Develop DAO classes with necessary interfaces, abstract classes, and Generics to support CRUD operations using JDBC.
+3. **Scalability & Flexibility**: Ensure the DAO classes are scalable and flexible, allowing support for various frameworks and databases.
+4. **Connection Pool Integration**: Utilize the provided connection pool for JDBC operations within the DAO classes.
+5. **Service Layer Implementation**: Implement a Service layer with appropriate abstractions to facilitate switching between different databases and frameworks seamlessly.
 
 ### Implementation Guidelines
 
-1. **Insertion, Updating, Deletion**: Utilize `INSERT`, `UPDATE`, `DELETE` statements for data manipulation.
-2. **Alter Table**: Use `ALTER TABLE` statements to modify table structure.
-3. **Joining Tables**: Write SQL queries to join tables based on appropriate relationships.
-4. **Aggregate Functions & Group By**: Employ aggregate functions like `SUM`, `COUNT`, `MAX`, `MIN` along with `GROUP BY` clause for data summarization.
+1. **Schema Design**: Design the database schema hierarchy following the specifications outlined in the course.
+2. **DAO Classes**: Implement DAO classes with interfaces, abstract classes, and Generics to perform CRUD operations using JDBC.
+3. **Flexibility & Scalability**: Ensure the DAO design allows easy adaptation for different databases and frameworks.
+4. **Connection Pool Usage**: Integrate the provided connection pool for efficient database connectivity within the DAO classes.
+5. **Service Layer Abstraction**: Develop a Service layer with suitable abstractions to allow easy switching between databases and frameworks without impacting functionality.
