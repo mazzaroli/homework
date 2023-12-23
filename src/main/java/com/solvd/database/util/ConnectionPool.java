@@ -1,4 +1,4 @@
-package com.solvd.database;
+package com.solvd.database.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,10 +12,13 @@ import java.util.Properties;
 import java.util.Stack;
 import java.util.Vector;
 
+/**
+ * Utility class to manage a connection pool for database connections.
+ */
 public class ConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private static final int CON_POOL_SIZE = 5;
-    private static Properties p = new Properties();
+    private static Properties properties = new Properties();
     private static String userName;
     private static String url;
     private static String password;
@@ -29,7 +32,7 @@ public class ConnectionPool {
             try {
                 connection = DriverManager.getConnection(url, userName, password);
             } catch (SQLException e) {
-                LOGGER.info(e);
+                LOGGER.error("Error creating connection pool: " + e.getMessage());
             }
             conPool.add(connection);
         }
@@ -45,28 +48,36 @@ public class ConnectionPool {
 
     // Load the database properties from file when the class is loaded
     static {
-        try (FileInputStream f = new FileInputStream("src/main/resources/db.properties")) {
-            p.load(f);
+        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/db.properties")) {
+            properties.load(fileInputStream);
         } catch (IOException e) {
-            LOGGER.info(e);
+            LOGGER.error("Error loading properties: " + e.getMessage());
         }
-        url = p.getProperty("db.url");
-        userName = p.getProperty("db.username");
-        password = p.getProperty("db.password");
+        url = properties.getProperty("db.url");
+        userName = properties.getProperty("db.username");
+        password = properties.getProperty("db.password");
     }
 
-    // Get a new connection
+    /**
+     * Gets a new database connection.
+     *
+     * @return A new Connection object.
+     */
     private Connection getConnection() {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, userName, password);
-        } catch (Exception e) {
-            LOGGER.info(e);
+        } catch (SQLException e) {
+            LOGGER.error("Error getting connection: " + e.getMessage());
         }
         return conn;
     }
 
-    // Retrieve a connection from the pool
+    /**
+     * Retrieves a connection from the pool.
+     *
+     * @return A Connection object retrieved from the pool.
+     */
     public synchronized Connection retrieve() {
         Connection newConn = null;
         if (conPool.size() == 0) {
@@ -80,12 +91,16 @@ public class ConnectionPool {
         return newConn;
     }
 
-    // Return a connection to the pool
-    public synchronized void putback(Connection c) {
-        if (c != null) {
-            if (activeConnections.removeElement(c)) {
-                conPool.addElement(c);
-                LOGGER.info("Putting the connection back to Connection pool: " + c.toString());
+    /**
+     * Puts a connection back into the pool.
+     *
+     * @param connection The Connection object to be put back into the pool.
+     */
+    public synchronized void putback(Connection connection) {
+        if (connection != null) {
+            if (activeConnections.removeElement(connection)) {
+                conPool.addElement(connection);
+                LOGGER.info("Putting the connection back to Connection pool: " + connection.toString());
             } else {
                 throw new NullPointerException("Connection is not in the Active Connections array");
             }
