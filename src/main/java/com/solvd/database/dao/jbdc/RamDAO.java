@@ -1,6 +1,6 @@
 package com.solvd.database.dao.jbdc;
 
-import com.solvd.database.ConnectionPool;
+import com.solvd.database.util.ConnectionPool;
 import com.solvd.database.dao.IRamDAO;
 import com.solvd.database.model.Ram;
 import org.apache.logging.log4j.LogManager;
