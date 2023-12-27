@@ -1,21 +1,21 @@
+Certainly! Here's a README file for the homework task involving the addition of MyBatis DAOs to the existing hierarchy and switching service classes to MyBatis:
+
+---
+
 # Homework Readme
 
-## Database Schema Creation with DAO Implementation and Service Layer Abstraction
+## Integrating MyBatis DAOs and Switching Service Classes
 
-This homework task involves building a schema hierarchy based on a provided course and creating Data Access Object (DAO) classes with interfaces, abstract classes, and Generics. The DAO classes should be designed to be scalable and flexible to support different frameworks and databases. All CRUD (Create, Read, Update, Delete) operations must be implemented using JDBC, utilizing a connection pool from the provided block. Additionally, implement a Service layer with suitable abstractions to enable switching between databases and frameworks.
+This homework task focuses on enhancing the existing hierarchy by integrating MyBatis Data Access Objects (DAOs) while fulfilling the same requirements. Additionally, it involves transitioning service classes to leverage MyBatis.
 
 ### Task Overview
 
-1. **Schema Hierarchy Building**: Create a database schema hierarchy based on the course specifications.
-2. **DAO Implementation**: Develop DAO classes with necessary interfaces, abstract classes, and Generics to support CRUD operations using JDBC.
-3. **Scalability & Flexibility**: Ensure the DAO classes are scalable and flexible, allowing support for various frameworks and databases.
-4. **Connection Pool Integration**: Utilize the provided connection pool for JDBC operations within the DAO classes.
-5. **Service Layer Implementation**: Implement a Service layer with appropriate abstractions to facilitate switching between different databases and frameworks seamlessly.
+1. **MyBatis DAOs Integration**: Add MyBatis DAOs to the existing hierarchy, adhering to the same functionality and specifications as previously defined with JDBC-based DAOs.
+2. **Mapping Strategy Choice**: Choose between XML or interface-based mapping for MyBatis configurations, ensuring seamless integration with the hierarchy.
+3. **Service Classes Transition**: Switch service classes from the previously used approach (e.g., JDBC) to utilize MyBatis, maintaining the same functionality and flexibility.
 
 ### Implementation Guidelines
 
-1. **Schema Design**: Design the database schema hierarchy following the specifications outlined in the course.
-2. **DAO Classes**: Implement DAO classes with interfaces, abstract classes, and Generics to perform CRUD operations using JDBC.
-3. **Flexibility & Scalability**: Ensure the DAO design allows easy adaptation for different databases and frameworks.
-4. **Connection Pool Usage**: Integrate the provided connection pool for efficient database connectivity within the DAO classes.
-5. **Service Layer Abstraction**: Develop a Service layer with suitable abstractions to allow easy switching between databases and frameworks without impacting functionality.
+1. **MyBatis DAO Integration**: Implement DAOs using MyBatis, adhering to the same CRUD operations and interfaces/abstract classes as previously defined.
+2. **Mapping Configuration**: Choose an appropriate mapping strategy (XML or interface-based) for MyBatis configurations to ensure compatibility and efficiency.
+3. **Service Layer Transition**: Modify service classes to leverage MyBatis for data access, ensuring the same functionality and flexibility as before.
