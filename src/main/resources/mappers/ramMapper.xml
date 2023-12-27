@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.database.dao.IRamDAO">
+
+    <resultMap id="result" type="com.solvd.database.model.Ram">
+        <id property="id" column="id"/>
+        <result property="capacity" column="capacity"/>
+        <result property="Computer_computer_id" column="Computer_computer_id"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM ram WHERE id = #{id}
+    </select>
+
+    <select id="getRams" resultMap="result">
+        SELECT * FROM ram
+    </select>
+
+    <insert id="insertRam" parameterType="com.solvd.database.model.Ram" useGeneratedKeys="true" keyProperty="id"
+            timeout="20">
+        INSERT INTO ram (capacity, Computer_computer_id)
+        VALUES (#{capacity}, #{Computer_computer_id})
+    </insert>
+
+    <update id="updateRam" parameterType="com.solvd.database.model.Ram">
+        UPDATE ram SET
+        capacity = #{capacity},
+        Computer_computer_id = #{Computer_computer_id}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeRam">
+        DELETE FROM ram WHERE id = #{id}
+    </delete>
+
+</mapper>

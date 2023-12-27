@@ -1,8 +1,10 @@
-[INFO ] 2023-12-03 13:36:43.426 [main] ComputerInventoryManager - 10 Apple Macbook M1 added to branch Nissei Asunción: Avenida España 1261
-[INFO ] 2023-12-03 13:36:43.432 [main] ComputerInventoryManager - 100 Apple Macbook M2 added to branch Nissei Asunción: Avenida España 1261
-[INFO ] 2023-12-03 13:36:43.433 [main] ComputerInventoryManager - 
-[INFO ] 2023-12-03 13:36:43.440 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
-[INFO ] 2023-12-03 13:36:43.440 [main] ComputerInventoryManager - 
-[INFO ] 2023-12-03 13:36:43.440 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
-[INFO ] 2023-12-03 13:36:43.445 [main] ComputerInventoryManager - -> 10 units of model Macbook M1
-[INFO ] 2023-12-03 13:36:43.445 [main] ComputerInventoryManager - -> 100 units of model Macbook M2
+[INFO ] 2023-12-04 12:27:42.526 [main] Mouse - Mouse is configurable
+[INFO ] 2023-12-04 12:27:42.531 [main] Mouse - Mouse is configurable
+[INFO ] 2023-12-04 12:27:42.541 [main] ComputerInventoryManager - 10 Apple Macbook M1 added to branch Nissei Asunción: Avenida España 1261
+[INFO ] 2023-12-04 12:27:42.541 [main] ComputerInventoryManager - 100 Apple Macbook M2 added to branch Nissei Asunción: Avenida España 1261
+[INFO ] 2023-12-04 12:27:42.542 [main] ComputerInventoryManager - 
+[INFO ] 2023-12-04 12:27:42.548 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
+[INFO ] 2023-12-04 12:27:42.548 [main] ComputerInventoryManager - 
+[INFO ] 2023-12-04 12:27:42.549 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
+[INFO ] 2023-12-04 12:27:42.558 [main] ComputerInventoryManager - -> 10 units of model Macbook M1
+[INFO ] 2023-12-04 12:27:42.558 [main] ComputerInventoryManager - -> 100 units of model Macbook M2

@@ -1,21 +1,21 @@
 # Homework Readme
 
-## Collection Streaming and Reflection in Java
+## Database Schema Creation with DAO Implementation and Service Layer Abstraction
 
-This homework assignment involves implementing 7 collection streaming operations with terminal and non-terminal operations. Additionally, utilize reflection to extract information about fields, constructors, and methods, and demonstrate object creation and method invocation solely through reflection.
+This homework task involves building a schema hierarchy based on a provided course and creating Data Access Object (DAO) classes with interfaces, abstract classes, and Generics. The DAO classes should be designed to be scalable and flexible to support different frameworks and databases. All CRUD (Create, Read, Update, Delete) operations must be implemented using JDBC, utilizing a connection pool from the provided block. Additionally, implement a Service layer with suitable abstractions to enable switching between databases and frameworks.
 
 ### Task Overview
 
-1. **Collection Streaming**: Implement 7 streaming operations within the collection hierarchy, showcasing both terminal and non-terminal operations.
-2. **Reflection Usage**: Utilize reflection to extract information about fields, constructors, and methods from a class. Create an object and invoke a method using reflection.
-
-### Additional Information
-
-- **Collection Streaming**: Use the Stream API to perform various operations on collections, including filtering, mapping, reducing, etc. Showcase both intermediate and terminal operations.
-- **Reflection**: Reflection provides a means to inspect classes, interfaces, fields, constructors, and methods at runtime. Extract metadata and dynamically access these elements using reflection.
+1. **Schema Hierarchy Building**: Create a database schema hierarchy based on the course specifications.
+2. **DAO Implementation**: Develop DAO classes with necessary interfaces, abstract classes, and Generics to support CRUD operations using JDBC.
+3. **Scalability & Flexibility**: Ensure the DAO classes are scalable and flexible, allowing support for various frameworks and databases.
+4. **Connection Pool Integration**: Utilize the provided connection pool for JDBC operations within the DAO classes.
+5. **Service Layer Implementation**: Implement a Service layer with appropriate abstractions to facilitate switching between different databases and frameworks seamlessly.
 
 ### Implementation Guidelines
 
-1. **Collection Streaming Operations**: Implement 7 different operations using the Stream API on collections. Include a mix of terminal and non-terminal operations to demonstrate their functionalities.
-2. **Reflection Information Extraction**: Use reflection to gather details about fields, constructors, and methods of a particular class.
-3. **Object Creation and Method Invocation via Reflection**: Dynamically create an object of a class and invoke a method solely using reflection techniques.
+1. **Schema Design**: Design the database schema hierarchy following the specifications outlined in the course.
+2. **DAO Classes**: Implement DAO classes with interfaces, abstract classes, and Generics to perform CRUD operations using JDBC.
+3. **Flexibility & Scalability**: Ensure the DAO design allows easy adaptation for different databases and frameworks.
+4. **Connection Pool Usage**: Integrate the provided connection pool for efficient database connectivity within the DAO classes.
+5. **Service Layer Abstraction**: Develop a Service layer with suitable abstractions to allow easy switching between databases and frameworks without impacting functionality.
