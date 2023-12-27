@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<laptop>
+    <id>10</id>
+    <brand>Apple</brand>
+    <model>MacBook M1</model>
+    <cpu>
+        <model>Apple M1</model>
+        <manufacturer>Apple</manufacturer>
+        <clockSpeed>3.2</clockSpeed>
+    </cpu>
+    <gpu>
+        <model>Integrated Apple GPU</model>
+        <memory>8</memory>
+        <clockSpeed>1600</clockSpeed>
+    </gpu>
+    <ram>8GB</ram>
+    <keyboard>
+        <type>Membrane</type>
+    </keyboard>
+    <monitor>
+        <type>Retina Display</type>
+    </monitor>
+    <mouse>
+        <type>Trackpad</type>
+    </mouse>
+</laptop>
