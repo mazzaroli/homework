@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.database.dao.IGpuDAO"> <!-- Cambiado desde ICpuDAO a IGpuDAO -->
+
+    <resultMap id="result" type="com.solvd.database.model.Gpu"> <!-- Cambiado desde Cpu a Gpu -->
+        <id property="id" column="id"/>
+        <result property="memory" column="memory"/> <!-- Añadido memory -->
+        <result property="boostClock" column="boost_cloock"/> <!-- Ajustado boostClock -->
+        <result property="Component_id" column="Component_id"/>
+        <result property="Computer_computer_id" column="Computer_computer_id"/>
+        <result property="price" column="price"/> <!-- Añadido price -->
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM gpu WHERE id = #{id} <!-- Cambiado desde cpu a gpu -->
+    </select>
+
+    <select id="getGpus" resultMap="result">
+        SELECT * FROM gpu <!-- Cambiado desde cpu a gpu -->
+    </select>
+
+    <insert id="insertGpu" parameterType="com.solvd.database.model.Gpu" useGeneratedKeys="true" keyProperty="id"
+            timeout="20">
+        INSERT INTO gpu (memory, boost_cloock, Component_id, Computer_computer_id, price) <!-- Ajustado boost_cloock -->
+        VALUES (#{memory}, #{boostClock}, #{Component_id}, #{Computer_computer_id}, #{price}) <!-- Ajustado boostClock -->
+    </insert>
+
+    <update id="updateGpu" parameterType="com.solvd.database.model.Gpu">
+        UPDATE gpu SET
+        memory = #{memory}, <!-- Añadido memory -->
+        boost_cloock = #{boostClock}, <!-- Ajustado boost_cloock -->
+        Component_id = #{Component_id},
+        Computer_computer_id = #{Computer_computer_id},
+        price = #{price} <!-- Añadido price -->
+        WHERE id = #{id} <!-- Cambiado desde cpu a gpu -->
+    </update>
+
+    <delete id="removeGpu">
+        DELETE FROM gpu WHERE id = #{id} <!-- Cambiado desde cpu a gpu -->
+    </delete>
+</mapper>
