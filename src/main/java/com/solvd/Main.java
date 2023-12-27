@@ -1,23 +1,24 @@
 package com.solvd;
 
-import com.solvd.database.dao.jbdc.CpuDAO;
-import com.solvd.database.dao.jbdc.GpuDAO;
-import com.solvd.database.dao.jbdc.RamDAO;
-import com.solvd.database.model.Cpu;
-import com.solvd.database.model.Gpu;
-import com.solvd.database.model.Ram;
+import com.solvd.database.dao.*;
+import com.solvd.database.model.*;
+import com.solvd.database.util.DAOFactoryGenerator;
+import com.solvd.enums.FactoryType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import static com.solvd.enums.DAOType.*;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
-        GpuDAO gpuDAO = new GpuDAO();
-        RamDAO ramDAO = new RamDAO();
-        CpuDAO cpuDAO = new CpuDAO();
+    public static void main(String[] args) throws SQLException {
+        IGpuDAO gpuDAO = (IGpuDAO) DAOFactoryGenerator.createFactory(FactoryType.MYBATIS).getFactory(GPU);
+        IRamDAO ramDAO = (IRamDAO) DAOFactoryGenerator.createFactory(FactoryType.MYBATIS).getFactory(RAM);
+        ICpuDAO cpuDAO = (ICpuDAO) DAOFactoryGenerator.createFactory(FactoryType.MYBATIS).getFactory(CPU);
 
         // ##############################
         // Create Operations
@@ -51,7 +52,7 @@ public class Main {
         // ##############################
 
         // Read a specific GPU by its ID
-        int gpuIdToRead = 1; // Assuming 1 is the ID of the GPU you want to read
+        int gpuIdToRead = 15; // Assuming 1 is the ID of the GPU you want to read
         Gpu gpuRead = gpuDAO.getEntityById(gpuIdToRead);
         System.out.println("Data of the read GPU: " + gpuRead);
 
@@ -72,7 +73,7 @@ public class Main {
         // Update an existing GPU
         Gpu gpuToUpdate = gpuDAO.getEntityById(15);
         if (gpuToUpdate != null) {
-            gpuToUpdate.setPrice(777.77); // Update price
+            gpuToUpdate.setPrice(999.99); // Update price
             gpuDAO.updateEntity(gpuToUpdate);
         } else {
             System.out.println("Data of the read GPU: " + gpuRead);
@@ -81,7 +82,7 @@ public class Main {
         // Update an existing RAM
         Ram ramToUpdate = ramDAO.getEntityById(2);
         if (ramToUpdate != null) {
-            ramToUpdate.setCapacity(77); // Update capacity
+            ramToUpdate.setCapacity(99); // Update capacity
             ramToUpdate.setComputer_computer_id(1);
             ramDAO.updateEntity(ramToUpdate);
         } else {
@@ -91,7 +92,7 @@ public class Main {
         // Update an existing CPU
         Cpu cpuToUpdate = cpuDAO.getEntityById(1);
         if (cpuToUpdate != null) {
-            cpuToUpdate.setSpeed(10.0); // Update speed
+            cpuToUpdate.setSpeed(99.0); // Update speed
             cpuDAO.updateEntity(cpuToUpdate);
         } else {
             System.out.println("Data of the read CPU: " + cpuRead);
