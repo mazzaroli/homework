@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<laptop>
-    <id>10</id>
+<laptop id="1">
     <brand>Apple</brand>
     <model>MacBook M1</model>
+    <manufactureDate>31/12/2023</manufactureDate>
     <cpu>
         <model>Apple M1</model>
         <manufacturer>Apple</manufacturer>
@@ -13,7 +13,14 @@
         <memory>8</memory>
         <clockSpeed>1600</clockSpeed>
     </gpu>
-    <ram>8GB</ram>
+    <ramSlots>
+        <ram id="1">
+            <capacity>8GB</capacity>
+        </ram>
+        <ram id="2">
+            <capacity>8GB</capacity>
+        </ram>
+    </ramSlots>
     <keyboard>
         <type>Membrane</type>
     </keyboard>
