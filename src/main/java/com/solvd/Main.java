@@ -1,120 +1,24 @@
 package com.solvd;
 
-import com.solvd.database.dao.jbdc.CpuDAO;
-import com.solvd.database.dao.jbdc.GpuDAO;
-import com.solvd.database.dao.jbdc.RamDAO;
-import com.solvd.database.model.Cpu;
-import com.solvd.database.model.Gpu;
-import com.solvd.database.model.Ram;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.solvd.parser.models.Laptop;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
-import java.util.List;
+import java.io.File;
+
 
 public class Main {
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
-
     public static void main(String[] args) {
-        GpuDAO gpuDAO = new GpuDAO();
-        RamDAO ramDAO = new RamDAO();
-        CpuDAO cpuDAO = new CpuDAO();
+        File file = new File("src/main/resources/xml/xml.xml");
 
-        // ##############################
-        // Create Operations
-        // ##############################
-
-        // Create and insert a new GPU into the database
-        Gpu gpuToAdd = new Gpu();
-        gpuToAdd.setMemory(8);
-        gpuToAdd.setBoostClock(1800);
-        gpuToAdd.setPrice(399.99);
-        gpuToAdd.setComponent_id(2);
-        gpuToAdd.setComputer_computer_id(2);
-        gpuDAO.insertEntity(gpuToAdd);
-
-        // Create and insert a new RAM into the database
-        Ram ramToAdd = new Ram();
-        ramToAdd.setCapacity(777);
-        ramToAdd.setComputer_computer_id(2);
-        ramDAO.insertEntity(ramToAdd);
-
-        // Create and insert a new CPU into the database
-        Cpu cpuToAdd = new Cpu();
-        cpuToAdd.setManufacturer("Intel");
-        cpuToAdd.setSpeed(7.7);
-        cpuToAdd.setComponent_id(2);
-        cpuToAdd.setComputer_computer_id(2);
-        cpuDAO.insertEntity(cpuToAdd);
-
-        // ##############################
-        // Read Operations
-        // ##############################
-
-        // Read a specific GPU by its ID
-        int gpuIdToRead = 1; // Assuming 1 is the ID of the GPU you want to read
-        Gpu gpuRead = gpuDAO.getEntityById(gpuIdToRead);
-        System.out.println("Data of the read GPU: " + gpuRead);
-
-        // Read a specific RAM by its ID
-        int ramIdToRead = 2; // Assuming 2 is the ID of the RAM you want to read
-        Ram ramRead = ramDAO.getEntityById(ramIdToRead);
-        System.out.println("Data of the read RAM: " + ramRead);
-
-        // Read a specific CPU by its ID
-        int cpuIdToRead = 2; // Assuming 2 is the ID of the CPU you want to read
-        Cpu cpuRead = cpuDAO.getEntityById(cpuIdToRead);
-        System.out.println("Data of the read CPU: " + cpuRead);
-
-        // ##############################
-        // Update Operations
-        // ##############################
-
-        // Update an existing GPU
-        Gpu gpuToUpdate = gpuDAO.getEntityById(15);
-        if (gpuToUpdate != null) {
-            gpuToUpdate.setPrice(777.77); // Update price
-            gpuDAO.updateEntity(gpuToUpdate);
-        } else {
-            System.out.println("Data of the read GPU: " + gpuRead);
+        try {
+            JAXBContext context = JAXBContext.newInstance(Laptop.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            Laptop laptop = (Laptop) unmarshaller.unmarshal(file);
+            System.out.println(laptop);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
         }
-
-        // Update an existing RAM
-        Ram ramToUpdate = ramDAO.getEntityById(2);
-        if (ramToUpdate != null) {
-            ramToUpdate.setCapacity(77); // Update capacity
-            ramToUpdate.setComputer_computer_id(1);
-            ramDAO.updateEntity(ramToUpdate);
-        } else {
-            System.out.println("Data of the read RAM: " + ramRead);
-        }
-
-        // Update an existing CPU
-        Cpu cpuToUpdate = cpuDAO.getEntityById(1);
-        if (cpuToUpdate != null) {
-            cpuToUpdate.setSpeed(10.0); // Update speed
-            cpuDAO.updateEntity(cpuToUpdate);
-        } else {
-            System.out.println("Data of the read CPU: " + cpuRead);
-        }
-
-        // ##############################
-        // Delete Operations
-        // ##############################
-
-        // Delete a GPU by its ID
-        Gpu gpuIdToDelete = gpuDAO.getEntityById(2); // Assuming 2 is the ID of the GPU you want to delete
-        gpuDAO.removeEntity(gpuIdToDelete);
-        List<Gpu> gpus = gpuDAO.getEntities();
-        gpus.forEach(LOGGER::error);
-
-        // Delete a RAM by its ID
-        ramDAO.removeEntity(ramDAO.getEntityById(6));
-        List<Ram> rams = ramDAO.getEntities();
-        rams.forEach(LOGGER::error);
-
-        // Delete a CPU by its ID
-        cpuDAO.removeEntity(cpuDAO.getEntityById(6));
-        List<Cpu> cpus = cpuDAO.getEntities();
-        cpus.forEach(LOGGER::error);
     }
 }
