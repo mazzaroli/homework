@@ -1,10 +1,11 @@
 package com.solvd.parser.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RAM {
-    //
+    @JsonProperty("@id")
     @XmlAttribute(name = "id")
     private long id;
     private String capacity;
