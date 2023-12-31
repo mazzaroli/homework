@@ -4,9 +4,9 @@
     <xs:element name="laptop">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:unsignedByte" />
                 <xs:element name="brand" type="xs:string" />
                 <xs:element name="model" type="xs:string" />
+                <xs:element name="manufactureDate" type="xs:string" />
                 <xs:element name="cpu">
                     <xs:complexType>
                         <xs:sequence>
@@ -25,7 +25,20 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="ram" type="xs:string" />
+                <xs:element name="ramSlots">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="ram">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="capacity" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="keyboard">
                     <xs:complexType>
                         <xs:sequence>
@@ -48,6 +61,7 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:unsignedByte" use="required" />
         </xs:complexType>
     </xs:element>
 </xs:schema>
