@@ -1,12 +1,14 @@
 package com.solvd.parser.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RamSlots {
+    @JsonProperty("ram")
     @XmlElement(name = "ram")
     private List<RAM> rams;
 
