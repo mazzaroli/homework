@@ -1,5 +1,10 @@
 package com.solvd.parser.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.solvd.parser.DateJacksonAdapter;
 import com.solvd.parser.DateXMLAdapter;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -9,19 +14,29 @@ import java.util.List;
 
 @XmlRootElement(name = "laptop")
 @XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"id", "brand", "model", "manufactureDate", "ramSlots", "cpu", "graphicCard", "keyboard", "monitor", "mouse"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Laptop {
-//
     @XmlAttribute(name = "id")
     private int id;
+    @JsonProperty
     private String brand;
+    @JsonProperty
     private String model;
+    @JsonDeserialize(using = DateJacksonAdapter.class)
     @XmlJavaTypeAdapter(DateXMLAdapter.class)
     private Date manufactureDate;
+    @JsonProperty
     private List<RamSlots> ramSlots;
+    @JsonProperty
     private CPU cpu;
+    @JsonProperty("graphicCard")
     private GPU gpu;
+    @JsonProperty
     private Keyboard keyboard;
+    @JsonProperty
     private Monitor monitor;
+    @JsonProperty
     private Mouse mouse;
 
 
