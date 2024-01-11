@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<laptop id="1">
+    <brand>Apple</brand>
+    <model>MacBook M1</model>
+    <manufactureDate>31/12/2023</manufactureDate>
+    <ramSlots>
+        <ram id="1">
+            <capacity>8GB</capacity>
+        </ram>
+        <ram id="2">
+            <capacity>8GB</capacity>
+        </ram>
+    </ramSlots>
+    <cpu>
+        <clockSpeed>3.2</clockSpeed>
+        <manufacturer>Apple</manufacturer>
+        <model>Apple M1</model>
+    </cpu>
+    <gpu>
+        <clockSpeed>1600</clockSpeed>
+        <memory>8</memory>
+        <model>Integrated Apple GPU</model>
+    </gpu>
+    <keyboard>
+        <type>Membrane</type>
+    </keyboard>
+    <monitor>
+        <type>Retina Display</type>
+    </monitor>
+    <mouse>
+        <type>Trackpad</type>
+    </mouse>
+</laptop>
