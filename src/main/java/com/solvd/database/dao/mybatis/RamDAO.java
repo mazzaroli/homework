@@ -1,6 +1,6 @@
 package com.solvd.database.dao.mybatis;
 
-import com.solvd.database.util.ConnectionPool;
+import com.solvd.database.util.connection.ConnectionPool;
 import com.solvd.database.dao.IRamDAO;
 import com.solvd.database.model.Ram;
 import org.apache.logging.log4j.LogManager;
