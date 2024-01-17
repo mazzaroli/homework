@@ -1,19 +1,30 @@
 # Homework README
 
-## Implementing JSON Processing with Jackson Annotations
+## Implementing SOLID Principles and Design Patterns
 
-This homework task focuses on JSON processing using the Jackson library. The objective is to create a JSON file representing data for a minimum of 5 classes from the provided hierarchy. Additionally, integrate Jackson annotations into the hierarchy's classes, ensuring coverage for Date, List, and complex objects. Finally, parse the JSON file using Jackson annotations to map the JSON representation to Java objects.
+This homework task involves the integration of SOLID principles and various Design Patterns into your existing project. The primary goals include the incorporation of Factory, Abstract Factory, Builder, Listener, Facade, Decorator, Proxy, Strategy, and MVC patterns into the project. Additionally, the existing code should be refactored to adhere to SOLID principles.
 
 ### Task Overview
 
-1. **JSON File Creation**: Generate a JSON file containing data for at least 5 classes from the given hierarchy.
-2. **Jackson Annotation Integration**: Add Jackson annotations to the hierarchy's classes, covering Date, List, and complex objects for accurate JSON mapping.
-3. **Annotation Coverage**: Ensure comprehensive coverage of Jackson annotations to accurately represent JSON elements and structures in Java classes.
-4. **JSON Parsing using Jackson**: Parse the JSON file utilizing Jackson annotations to map JSON data to corresponding Java objects.
+1. **Design Pattern Integration**:
+    - Implement Factory, Abstract Factory, Builder, Listener, Facade, Decorator, Proxy, Strategy, and MVC patterns into your current project.
+    - Each pattern should be applied where it fits naturally within the existing project structure.
+
+2. **SOLID Principles Refactoring**:
+    - Refactor the current codebase to align with the SOLID principles.
+    - Focus on Single Responsibility Principle (SRP), Open/Closed Principle (OCP), Liskov Substitution Principle (LSP), Interface Segregation Principle (ISP), and Dependency Inversion Principle (DIP).
 
 ### Implementation Guidelines
 
-1. **JSON File Structure**: Design the JSON file structure to encompass data related to the specified 5 classes from the given hierarchy.
-2. **Jackson Annotation Integration**: Apply Jackson annotations (`@JsonProperty`, `@JsonFormat`, `@JsonManagedReference`, etc.) to appropriate fields or properties in the hierarchy's classes.
-3. **Date, List, and Complex Object Annotation**: Annotate fields or properties representing Date types, List structures, and complex objects accurately with Jackson annotations.
-4. **JSON Parsing Execution**: Implement Jackson parsing functionality to convert JSON data into corresponding Java objects using the annotated classes.
+1. **Pattern Integration**:
+    - Identify suitable scenarios within your current project for each of the specified design patterns.
+    - Apply patterns judiciously to enhance project structure, maintainability, and flexibility.
+
+2. **SOLID Principles Refactoring**:
+    - Evaluate existing code and refactor as needed to adhere to SOLID principles.
+    - Strive for modular, loosely coupled, and easily maintainable code.
+
+### Considerations
+
+- **Pattern Applicability**: Choose appropriate scenarios for each design pattern, ensuring they contribute positively to the project's architecture.
+- **SOLID Principles Adherence**: Refactor the code with careful consideration of SOLID principles, focusing on improving code quality and maintainability.
