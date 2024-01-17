@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.database.dao.ICpuDAO">
+
+    <resultMap id="result" type="com.solvd.database.model.Cpu">
+        <id property="id" column="id"/>
+        <result property="manufacturer" column="manufacturer"/>
+        <result property="speed" column="speed"/>
+        <result property="Component_id" column="Component_id"/>
+        <result property="Computer_computer_id" column="Computer_computer_id"/>
+    </resultMap>
+
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        SELECT * FROM cpu WHERE id = #{id}
+    </select>
+
+    <select id="getCpus" resultMap="result">
+        SELECT * FROM cpu
+    </select>
+
+    <insert id="insertCpu" parameterType="com.solvd.database.model.Cpu" useGeneratedKeys="true" keyProperty="id"
+            timeout="20">
+        INSERT INTO cpu (manufacturer, speed, Component_id, Computer_computer_id)
+        VALUES (#{manufacturer}, #{speed}, #{Component_id}, #{Computer_computer_id})
+    </insert>
+
+    <update id="updateCpu" parameterType="com.solvd.database.model.Cpu">
+        UPDATE cpu SET
+        manufacturer = #{manufacturer},
+        speed = #{speed},
+        Component_id = #{Component_id},
+        Computer_computer_id = #{Computer_computer_id}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeCpu">
+        DELETE FROM cpu WHERE id = #{id}
+    </delete>
+</mapper>

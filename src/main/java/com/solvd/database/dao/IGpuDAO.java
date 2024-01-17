@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IGpuDAO extends IBaseDao{
 
-    Gpu getEntityById(int id) throws SQLException;
+    Gpu getEntityById(int id);
 
     void insertEntity(Gpu t);
 

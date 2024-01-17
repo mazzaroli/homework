@@ -1,184 +1,86 @@
 package com.solvd.database.dao.mybatis;
 
-import com.solvd.database.util.connection.ConnectionPool;
-import com.solvd.database.dao.IRamDAO;
-import com.solvd.database.model.Ram;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.solvd.database.dao.IRamDAO; // Cambiado desde IGpuDAO a IRamDAO
+import com.solvd.database.model.Ram; // Cambiado desde Gpu a Ram
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 
-public class RamDAO implements IRamDAO {
-    private static Logger logger = LogManager.getLogger(RamDAO.class);
-    ConnectionPool connectionPool = ConnectionPool.getInstance();
-    private static final Logger LOGGER = LogManager.getLogger(RamDAO.class);
+public class RamDAO implements IRamDAO { // Cambiado desde GpuDAO a RamDAO
+    private static final Logger LOGGER = LogManager.getLogger(RamDAO.class); // Cambiado desde GpuDAO a RamDAO
+    private static IRamDAO ramMapper; // Cambiado desde IGpuDAO a IRamDAO
+    private static SqlSession sqlSession;
+    private static final SqlSessionFactory sqlSessionFactory;
+    private static Reader reader = null;
 
-    /** Retrieves a Ram entity from the database based on its ID.
-     * @param id The ID of the Ram entity to retrieve.
-     * @return A Ram object retrieved from the database.
-     */
-    @Override
-    public Ram getEntityById(int id) {
-        Connection connection = connectionPool.retrieve();
-        Ram.RamBuilder ramBuilder = new Ram.RamBuilder();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+    static {
         try {
-            preparedStatement = connection.prepareStatement("Select * from ram where id=?");
-            preparedStatement.setInt(1, id);
-            preparedStatement.execute();
-            resultSet = preparedStatement.getResultSet();
-            while (resultSet.next()) {
-                ramBuilder
-                        .id(resultSet.getInt("id"))
-                        .capacity(resultSet.getInt("capacity"))
-                        .computerId(resultSet.getInt("Computer_computer_id"));
-            }
-        } catch (SQLException e) {
-            logger.error("Error retrieving Ram entity by ID: {}", e.getMessage());
-        } finally {
-            connectionPool.putback(connection);
-            closeAll(preparedStatement, resultSet);
+            reader = Resources.getResourceAsReader("mybatis.config.xml");
+        } catch (IOException e) {
+            LOGGER.info(e);
         }
-
-        return ramBuilder.build();
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
     }
 
-    /** Inserts a Ram entity into the database.
-     * @param t The Ram object to insert.
-     */
     @Override
-    public void insertEntity(Ram t) {
-        Connection connection = connectionPool.retrieve();
-        PreparedStatement preparedStatement = null;
-
-        try {
-            preparedStatement = connection.prepareStatement("INSERT INTO ram (capacity, Computer_computer_id) VALUES (?, ?)");
-            preparedStatement.setInt(1, t.getCapacity());
-            preparedStatement.setInt(2, t.getComputer_computer_id());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error("Error inserting Ram entity: {}", e.getMessage());
-        } finally {
-            connectionPool.putback(connection);
-            try {
-                assert preparedStatement != null;
-                preparedStatement.close();
-            } catch (SQLException e) {
-                logger.error("Error closing PreparedStatement: {}", e.getMessage());
-            }
-        }
+    public Ram getEntityById(int id) { // Cambiado desde Gpu a Ram
+        ramMapper = sqlSessionFactory.openSession().getMapper(IRamDAO.class); // Cambiado desde IGpuDAO a IRamDAO
+        Ram ram = ramMapper.getEntityById(id); // Cambiado desde Gpu a Ram
+        return ram;
     }
 
-    /** Updates a Ram entity in the database.
-     * @param t The Ram object to update.
-     */
     @Override
-    public void updateEntity(Ram t) {
-        Connection connection = connectionPool.retrieve();
-        PreparedStatement preparedStatement = null;
-
+    public void insertEntity(Ram entity) { // Cambiado desde Gpu a Ram
         try {
-            preparedStatement = connection.prepareStatement("UPDATE ram SET capacity=?, Computer_computer_id=? WHERE id=?");
-            preparedStatement.setInt(1, t.getCapacity());
-            preparedStatement.setInt(2, t.getComputer_computer_id());
-            preparedStatement.setInt(3, t.getId());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error("Error updating Ram entity: {}", e.getMessage());
+            sqlSession = sqlSessionFactory.openSession();
+            sqlSession.insert("insertRam", entity); // Cambiado desde insertGpu a insertRam
+            sqlSession.commit();
         } finally {
-            connectionPool.putback(connection);
-            try {
-                assert preparedStatement != null;
-                preparedStatement.close();
-            } catch (SQLException e) {
-                logger.error("Error closing PreparedStatement: {}", e.getMessage());
-            }
+            sqlSession.close();
         }
     }
 
-    /** Removes a Ram entity from the database.
-     * @param t The Ram object to remove.
-     */
     @Override
-    public void removeEntity(Ram t) {
-        Connection connection = connectionPool.retrieve();
-        PreparedStatement preparedStatement = null;
-
+    public void updateEntity(Ram entity) { // Cambiado desde Gpu a Ram
         try {
-            preparedStatement = connection.prepareStatement("DELETE FROM ram WHERE id=?");
-            preparedStatement.setInt(1, t.getId());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error("Error deleting Ram entity: {}", e.getMessage());
+            sqlSession = sqlSessionFactory.openSession();
+            sqlSession.update("updateRam", entity); // Cambiado desde updateGpu a updateRam
+            sqlSession.commit();
         } finally {
-            try {
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-            } catch (SQLException e) {
-                logger.error("Error closing PreparedStatement: {}", e.getMessage());
-            }
-            connectionPool.putback(connection);
+            sqlSession.close();
         }
     }
 
-    /** Retrieves all Ram entities from the database.
-     * @return A list of Ram objects retrieved from the database.
-     */
     @Override
-    public List<Ram> getEntities() {
-        List<Ram> list = new ArrayList<>();
-        Connection connection = connectionPool.retrieve();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+    public void removeEntity(Ram entity) { // Cambiado desde Gpu a Ram
         try {
-            preparedStatement = connection.prepareStatement("Select * from ram");
-            preparedStatement.execute();
-            resultSet = preparedStatement.getResultSet();
-            while (resultSet.next()) {
-                Ram.RamBuilder ramBuilder = new Ram.RamBuilder();
-                ramBuilder
-                        .id(resultSet.getInt("id"))
-                        .capacity(resultSet.getInt("capacity"))
-                        .computerId(resultSet.getInt("Computer_computer_id"));
-
-                list.add(ramBuilder.build());
-            }
-        } catch (SQLException e) {
-            logger.error("Error retrieving Ram entities: {}", e.getMessage());
+            sqlSession = sqlSessionFactory.openSession();
+            sqlSession.delete("removeRam", entity); // Cambiado desde removeGpu a removeRam
+            sqlSession.commit();
         } finally {
-            connectionPool.putback(connection);
-            closeAll(preparedStatement, resultSet);
-        }
-        return list;
-    }
-
-    private void closeAll(PreparedStatement preparedStatement, ResultSet resultSet) {
-        if (resultSet != null) {
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                logger.error("Error closing ResultSet: {}", e.getMessage());
-            }
-        }
-
-        if (preparedStatement != null) {
-            try {
-                preparedStatement.close();
-            } catch (SQLException e) {
-                logger.error("Error closing PreparedStatement: {}", e.getMessage());
-            }
+            sqlSession.close();
         }
     }
 
+    @Override
+    public List<Ram> getEntities() { // Cambiado desde Gpu a Ram
+        List<Ram> rams; // Cambiado desde List<Gpu> a List<Ram>
+        try {
+            sqlSession = sqlSessionFactory.openSession();
+            rams = sqlSession.selectList("getRams"); // Cambiado a showAllRams para reflejar RAMs
+        } finally {
+            sqlSession.close();
+        }
+        return rams; // Cambiado desde gpus a rams
+    }
 
-    // Additional methods overridden from IRamDAO interface, left blank as not implemented in this class.
     @Override
     public void insertEntity(Object o) {
 
