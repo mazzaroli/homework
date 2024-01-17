@@ -6,16 +6,17 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.solvd.database.dao.IRamDAO; // Cambiado desde IGpuDAO a IRamDAO
-import com.solvd.database.model.Ram; // Cambiado desde Gpu a Ram
+import com.solvd.database.dao.IRamDAO;
+import com.solvd.database.model.Ram;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
-public class RamDAO implements IRamDAO { // Cambiado desde GpuDAO a RamDAO
-    private static final Logger LOGGER = LogManager.getLogger(RamDAO.class); // Cambiado desde GpuDAO a RamDAO
-    private static IRamDAO ramMapper; // Cambiado desde IGpuDAO a IRamDAO
+public class RamDAO implements IRamDAO {
+    private static final Logger LOGGER = LogManager.getLogger(RamDAO.class);
+    private static IRamDAO ramMapper;
     private static SqlSession sqlSession;
     private static final SqlSessionFactory sqlSessionFactory;
     private static Reader reader = null;
@@ -30,17 +31,26 @@ public class RamDAO implements IRamDAO { // Cambiado desde GpuDAO a RamDAO
     }
 
     @Override
-    public Ram getEntityById(int id) { // Cambiado desde Gpu a Ram
-        ramMapper = sqlSessionFactory.openSession().getMapper(IRamDAO.class); // Cambiado desde IGpuDAO a IRamDAO
-        Ram ram = ramMapper.getEntityById(id); // Cambiado desde Gpu a Ram
+    public Ram getEntityById(int id) {
+        ramMapper = sqlSessionFactory.openSession().getMapper(IRamDAO.class);
+        Ram ram = ramMapper.getEntityById(id);
         return ram;
     }
 
     @Override
-    public void insertEntity(Ram entity) { // Cambiado desde Gpu a Ram
+    public void insertEntity(Ram entity) {
         try {
             sqlSession = sqlSessionFactory.openSession();
-            sqlSession.insert("insertRam", entity); // Cambiado desde insertGpu a insertRam
+
+            // Build a RamBuilder object to use the Builder pattern
+            Ram.RamBuilder ramBuilder = new Ram.RamBuilder();
+            ramBuilder
+                    .id(entity.getId())
+                    .capacity(entity.getCapacity())
+                    .computerId(entity.getComputer_computer_id());
+
+            // Insert the built object into the database
+            sqlSession.insert("insertRam", ramBuilder.build());
             sqlSession.commit();
         } finally {
             sqlSession.close();
@@ -48,10 +58,10 @@ public class RamDAO implements IRamDAO { // Cambiado desde GpuDAO a RamDAO
     }
 
     @Override
-    public void updateEntity(Ram entity) { // Cambiado desde Gpu a Ram
+    public void updateEntity(Ram entity) {
         try {
             sqlSession = sqlSessionFactory.openSession();
-            sqlSession.update("updateRam", entity); // Cambiado desde updateGpu a updateRam
+            sqlSession.update("updateRam", entity);
             sqlSession.commit();
         } finally {
             sqlSession.close();
@@ -59,10 +69,10 @@ public class RamDAO implements IRamDAO { // Cambiado desde GpuDAO a RamDAO
     }
 
     @Override
-    public void removeEntity(Ram entity) { // Cambiado desde Gpu a Ram
+    public void removeEntity(Ram entity) {
         try {
             sqlSession = sqlSessionFactory.openSession();
-            sqlSession.delete("removeRam", entity); // Cambiado desde removeGpu a removeRam
+            sqlSession.delete("removeRam", entity);
             sqlSession.commit();
         } finally {
             sqlSession.close();
@@ -70,29 +80,44 @@ public class RamDAO implements IRamDAO { // Cambiado desde GpuDAO a RamDAO
     }
 
     @Override
-    public List<Ram> getEntities() { // Cambiado desde Gpu a Ram
-        List<Ram> rams; // Cambiado desde List<Gpu> a List<Ram>
+    public List<Ram> getEntities() {
+        List<Ram> rams;
         try {
             sqlSession = sqlSessionFactory.openSession();
-            rams = sqlSession.selectList("getRams"); // Cambiado a showAllRams para reflejar RAMs
+
+            // Perform the database selection
+            rams = sqlSession.selectList("getRams");
+
+            // Rebuild Ram objects using the Builder pattern
+            List<Ram> rebuiltRams = new ArrayList<>();
+            for (Ram ram : rams) {
+                Ram.RamBuilder ramBuilder = new Ram.RamBuilder();
+                ramBuilder
+                        .id(ram.getId())
+                        .capacity(ram.getCapacity())
+                        .computerId(ram.getComputer_computer_id());
+
+                rebuiltRams.add(ramBuilder.build());
+            }
+            rams = rebuiltRams;
         } finally {
             sqlSession.close();
         }
-        return rams; // Cambiado desde gpus a rams
+        return rams;
     }
 
     @Override
     public void insertEntity(Object o) {
-
+        // Placeholder method, not implemented
     }
 
     @Override
     public void updateEntity(Object o, int i) {
-
+        // Placeholder method, not implemented
     }
 
     @Override
     public void removeEntity(Object o) {
-
+        // Placeholder method, not implemented
     }
 }
