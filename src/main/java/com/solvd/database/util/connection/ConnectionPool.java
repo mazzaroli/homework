@@ -1,4 +1,4 @@
-package com.solvd.database.util;
+package com.solvd.database.util.connection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
