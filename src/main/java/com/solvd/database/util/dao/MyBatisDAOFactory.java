@@ -1,10 +1,10 @@
-package com.solvd.database;
+package com.solvd.database.util.dao;
 
 import com.solvd.database.dao.IBaseDao;
 import com.solvd.database.dao.mybatis.CpuDAO;
 import com.solvd.database.dao.mybatis.GpuDAO;
 import com.solvd.database.dao.mybatis.RamDAO;
-import com.solvd.database.util.AbstractFactory;
+import com.solvd.database.util.abstractFactory.AbstractFactory;
 import com.solvd.enums.DAOType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
