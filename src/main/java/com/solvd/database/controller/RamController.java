@@ -31,8 +31,8 @@ public class RamController {
     }
 
     private Ram getRamById(int ramId) {
-        // Implementar lógica para obtener la RAM por ID desde la lista o la base de datos
-        // En este ejemplo, se buscará en la lista directamente
+        // Implement logic to retrieve RAM by ID from the list or database
+        // In this example, searching directly in the list
         return ramList.stream()
                 .filter(ram -> ram.getId().equals(ramId))
                 .findFirst()
@@ -48,7 +48,7 @@ public class RamController {
             List<Ram> sortedRams = sortingStrategy.sort(ramList);
             ramView.displayRamList(sortedRams);
         } else {
-            // Manejo de error o mensaje predeterminado
+            // Handle error or provide a default message
             LOGGER.error("Sorting strategy not set");
         }
     }
