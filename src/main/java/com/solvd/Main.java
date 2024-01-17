@@ -1,51 +1,79 @@
 package com.solvd;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.solvd.parser.models.Laptop;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
+import com.solvd.database.controller.RamController;
+import com.solvd.database.dao.*;
+import com.solvd.database.model.Ram;
+import com.solvd.database.strategy.SortByCapacity;
+import com.solvd.database.util.dao.DAOFactoryGenerator;
+import com.solvd.database.view.ConsoleRamView;
+import com.solvd.database.view.RamView;
+import com.solvd.enums.FactoryType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import static com.solvd.enums.DAOType.RAM;
 
 public class Main {
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
-        // JAXB - Reading from XML
-        File xmlFile = new File("src/main/resources/xml/xml.xml");
-        try {
-            JAXBContext context = JAXBContext.newInstance(Laptop.class);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            Laptop laptop = (Laptop) unmarshaller.unmarshal(xmlFile);
-            System.out.println("Deserialized Object: " + laptop);
+        // =================== Proxy Pattern ===================
+        // Create an instance of the desired concrete factory (e.g., JDBC)
+        IRamDAO ramDAO = (IRamDAO) DAOFactoryGenerator.createFactory(FactoryType.JDBC).getFactory(RAM);
+        System.out.println(ramDAO.getEntities());
 
-            // JAXB - Writing to XML
-            File outputXmlFile = new File("src/main/resources/xml/output.xml");
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(laptop, outputXmlFile);
-            System.out.println("Object successfully written to XML file.");
+        // =================== Builder Pattern ===================
+        Ram ram1 = new Ram.RamBuilder()
+                .id(1)
+                .capacity(64)
+                .computerId(123)
+                .build();
 
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        }
+        Ram ram2 = new Ram.RamBuilder()
+                .id(2)
+                .capacity(8)
+                .computerId(456)
+                .build();
 
-        // Jackson - Reading from JSON
-        File jsonFile = new File("src/main/resources/json/jacksonTest.json");
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            Laptop laptop = mapper.readValue(jsonFile, Laptop.class);
-            System.out.println("Deserialized Object: " + laptop);
+        Ram ram3 = new Ram.RamBuilder()
+                .id(3)
+                .capacity(777)
+                .computerId(789)
+                .build();
 
-            // Jackson - Writing to JSON
-            File outputJsonFile = new File("src/main/resources/json/output.json");
-            mapper.writeValue(outputJsonFile, laptop);
-            System.out.println("Object successfully written to JSON file.");
+        // RAM listener
+        Ram.RamListener ramListener = new Ram.RamListener() {
+            @Override
+            public void onRamCreated(Ram ram) {
+                System.out.println("Event: New RAM instance created - " + ram);
+            }
+        };
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        ramListener.onRamCreated(ram1);
+
+        // =================== MVC Pattern ===================
+        List<Ram> ramList = new ArrayList<>();
+        ramList.add(ram1);
+        ramList.add(ram2);
+        ramList.add(ram3);
+
+        RamView ramView = new ConsoleRamView(); // You can implement different views (console, GUI, web)
+        RamController ramController = new RamController(ramView, ramList);
+
+        // Display details of a RAM by ID
+        ramController.displayRamDetails(2);
+
+        // Display all RAMs
+        ramController.displayAllRam();
+
+        // Use a specific sorting strategy (can be changed dynamically)
+        ramController.setSortingStrategy(new SortByCapacity());
+
+        // Display Rams sorted by capacity
+        System.out.println("Hello");
+        ramController.displaySortedRam();
     }
 }
