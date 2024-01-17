@@ -25,7 +25,7 @@ public class RamDAO implements IRamDAO {
     @Override
     public Ram getEntityById(int id) {
         Connection connection = connectionPool.retrieve();
-        Ram ram = new Ram();
+        Ram.RamBuilder ramBuilder = new Ram.RamBuilder();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -34,9 +34,10 @@ public class RamDAO implements IRamDAO {
             preparedStatement.execute();
             resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
-                ram.setId(resultSet.getInt("id"));
-                ram.setCapacity(resultSet.getInt("capacity"));
-                ram.setComputer_computer_id(resultSet.getInt("Computer_computer_id"));
+                ramBuilder
+                        .id(resultSet.getInt("id"))
+                        .capacity(resultSet.getInt("capacity"))
+                        .computerId(resultSet.getInt("Computer_computer_id"));
             }
         } catch (SQLException e) {
             logger.error("Error retrieving Ram entity by ID: {}", e.getMessage());
@@ -45,7 +46,7 @@ public class RamDAO implements IRamDAO {
             closeAll(preparedStatement, resultSet);
         }
 
-        return ram;
+        return ramBuilder.build();
     }
 
     /** Inserts a Ram entity into the database.
@@ -141,11 +142,13 @@ public class RamDAO implements IRamDAO {
             preparedStatement.execute();
             resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
-                Ram ram = new Ram();
-                ram.setId(resultSet.getInt("id"));
-                ram.setCapacity(resultSet.getInt("capacity"));
-                ram.setComputer_computer_id(resultSet.getInt("Computer_computer_id"));
-                list.add(ram);
+                Ram.RamBuilder ramBuilder = new Ram.RamBuilder();
+                ramBuilder
+                        .id(resultSet.getInt("id"))
+                        .capacity(resultSet.getInt("capacity"))
+                        .computerId(resultSet.getInt("Computer_computer_id"));
+
+                list.add(ramBuilder.build());
             }
         } catch (SQLException e) {
             logger.error("Error retrieving Ram entities: {}", e.getMessage());
