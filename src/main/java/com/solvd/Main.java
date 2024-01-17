@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         // =================== Proxy Pattern ===================
         // Create an instance of the desired concrete factory (e.g., JDBC)
-        IRamDAO ramDAO = (IRamDAO) DAOFactoryGenerator.createFactory(FactoryType.JDBC).getFactory(RAM);
+        IRamDAO ramDAO = (IRamDAO) DAOFactoryGenerator.createFactory(FactoryType.MYBATIS).getFactory(RAM);
         System.out.println(ramDAO.getEntities());
 
         // =================== Builder Pattern ===================

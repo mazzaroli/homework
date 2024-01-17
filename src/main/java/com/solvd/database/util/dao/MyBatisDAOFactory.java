@@ -4,6 +4,7 @@ import com.solvd.database.dao.IBaseDao;
 import com.solvd.database.dao.mybatis.CpuDAO;
 import com.solvd.database.dao.mybatis.GpuDAO;
 import com.solvd.database.dao.mybatis.RamDAO;
+import com.solvd.database.proxy.RamDAOProxy;
 import com.solvd.database.util.abstractFactory.AbstractFactory;
 import com.solvd.enums.DAOType;
 import org.apache.logging.log4j.LogManager;
@@ -28,7 +29,7 @@ public class MyBatisDAOFactory extends AbstractFactory {
             case GPU:
                 return new GpuDAO();
             case RAM:
-                return new RamDAO();
+                return new RamDAOProxy();
             default:
                 logger.error("Unexpected value: " + dao);
                 return null;
