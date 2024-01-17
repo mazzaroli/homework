@@ -1,10 +1,4 @@
-[INFO ] 2023-12-04 12:27:42.526 [main] Mouse - Mouse is configurable
-[INFO ] 2023-12-04 12:27:42.531 [main] Mouse - Mouse is configurable
-[INFO ] 2023-12-04 12:27:42.541 [main] ComputerInventoryManager - 10 Apple Macbook M1 added to branch Nissei Asunción: Avenida España 1261
-[INFO ] 2023-12-04 12:27:42.541 [main] ComputerInventoryManager - 100 Apple Macbook M2 added to branch Nissei Asunción: Avenida España 1261
-[INFO ] 2023-12-04 12:27:42.542 [main] ComputerInventoryManager - 
-[INFO ] 2023-12-04 12:27:42.548 [main] ComputerInventoryManager - Starting displayInventoryByBrandAndModel for brand Apple...
-[INFO ] 2023-12-04 12:27:42.548 [main] ComputerInventoryManager - 
-[INFO ] 2023-12-04 12:27:42.549 [main] ComputerInventoryManager - Inventory of computers for brand Apple:
-[INFO ] 2023-12-04 12:27:42.558 [main] ComputerInventoryManager - -> 10 units of model Macbook M1
-[INFO ] 2023-12-04 12:27:42.558 [main] ComputerInventoryManager - -> 100 units of model Macbook M2
+[INFO ] 2024-01-17 13:01:58.028 [main] RamDAOProxy - Proxy: Performing additional operations before retrieving all Ram entities
+[INFO ] 2024-01-17 13:01:58.033 [main] ConnectionPool - The connection was retrieved: com.mysql.cj.jdbc.ConnectionImpl@16746061
+[INFO ] 2024-01-17 13:01:58.054 [main] ConnectionPool - Putting the connection back to Connection pool: com.mysql.cj.jdbc.ConnectionImpl@16746061
+[INFO ] 2024-01-17 13:01:58.055 [main] RamDAOProxy - Proxy: Performing additional operations after retrieving all Ram entities

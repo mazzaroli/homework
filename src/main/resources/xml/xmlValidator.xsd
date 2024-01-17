@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="laptop">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="xs:string" />
+                <xs:element name="model" type="xs:string" />
+                <xs:element name="manufactureDate" type="xs:string" />
+                <xs:element name="cpu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="model" type="xs:string" />
+                            <xs:element name="manufacturer" type="xs:string" />
+                            <xs:element name="clockSpeed" type="xs:decimal" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="gpu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="model" type="xs:string" />
+                            <xs:element name="memory" type="xs:unsignedByte" />
+                            <xs:element name="clockSpeed" type="xs:unsignedShort" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ramSlots">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="ram">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="capacity" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="keyboard">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="type" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="monitor">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="type" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="mouse">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="type" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

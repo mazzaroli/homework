@@ -1,4 +1,4 @@
-package com.solvd.database.util;
+package com.solvd.database.util.connection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Stack;
 import java.util.Vector;
@@ -18,22 +16,19 @@ import java.util.Vector;
 public class ConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private static final int CON_POOL_SIZE = 5;
-    private static Properties properties = new Properties();
-    private static String userName;
-    private static String url;
-    private static String password;
-    private Vector<Connection> conPool = new Vector<>(CON_POOL_SIZE, 1);
-    private Vector<Connection> activeConnections = new Stack<>();
+    private static final Properties properties = new Properties();
+    private static final String userName;
+    private static final String url;
+    private static final String password;
+    private final Vector<Connection> conPool = new Vector<>(CON_POOL_SIZE, 1);
+    private final Vector<Connection> activeConnections = new Stack<>();
+    private final ConnectionFactory connectionFactory;
 
-    // Constructor to initialize the Connection Pool
-    private ConnectionPool() {
+    // Constructor to initialize the Connection Pool with a ConnectionFactory
+    private ConnectionPool(ConnectionFactory connectionFactory) {
+        this.connectionFactory = connectionFactory;
         for (int i = 0; i < CON_POOL_SIZE; i++) {
-            Connection connection = null;
-            try {
-                connection = DriverManager.getConnection(url, userName, password);
-            } catch (SQLException e) {
-                LOGGER.error("Error creating connection pool: " + e.getMessage());
-            }
+            Connection connection = connectionFactory.createConnection();
             conPool.add(connection);
         }
     }
@@ -42,7 +37,9 @@ public class ConnectionPool {
 
     // Singleton pattern to get the instance of ConnectionPool
     public static ConnectionPool getInstance() {
-        if (instance == null) instance = new ConnectionPool();
+        if (instance == null) {
+            instance = new ConnectionPool(new DriverManagerConnectionFactory(url, userName, password));
+        }
         return instance;
     }
 
@@ -64,13 +61,7 @@ public class ConnectionPool {
      * @return A new Connection object.
      */
     private Connection getConnection() {
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url, userName, password);
-        } catch (SQLException e) {
-            LOGGER.error("Error getting connection: " + e.getMessage());
-        }
-        return conn;
+        return connectionFactory.createConnection();
     }
 
     /**

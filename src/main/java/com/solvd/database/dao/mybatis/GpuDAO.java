@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.solvd.database.dao.IGpuDAO; // Cambiado desde ICpuDAO a IGpuDAO
-import com.solvd.database.model.Gpu; // Cambiado desde Cpu a Gpu
+import com.solvd.database.dao.IGpuDAO;
+import com.solvd.database.model.Gpu;
 
 import java.io.IOException;
 import java.io.Reader;

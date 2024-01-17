@@ -1,4 +1,4 @@
-package com.solvd.database.util;
+package com.solvd.database.util.abstractFactory;
 
 import com.solvd.database.dao.IBaseDao;
 import com.solvd.enums.DAOType;

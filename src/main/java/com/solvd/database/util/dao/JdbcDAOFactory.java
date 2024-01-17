@@ -1,10 +1,10 @@
-package com.solvd.database;
+package com.solvd.database.util.dao;
 
 import com.solvd.database.dao.IBaseDao;
 import com.solvd.database.dao.jbdc.CpuDAO;
 import com.solvd.database.dao.jbdc.GpuDAO;
-import com.solvd.database.dao.jbdc.RamDAO;
-import com.solvd.database.util.AbstractFactory;
+import com.solvd.database.proxy.RamDAOProxy;
+import com.solvd.database.util.abstractFactory.AbstractFactory;
 import com.solvd.enums.DAOType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +28,7 @@ public class JdbcDAOFactory extends AbstractFactory {
             case GPU:
                 return new GpuDAO();
             case RAM:
-                return new RamDAO();
+                return new RamDAOProxy();
             default:
                 logger.error("Unexpected value: " + dao);
                 return null;

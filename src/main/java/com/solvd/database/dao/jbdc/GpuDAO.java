@@ -1,6 +1,6 @@
 package com.solvd.database.dao.jbdc;
 
-import com.solvd.database.util.ConnectionPool;
+import com.solvd.database.util.connection.ConnectionPool;
 import com.solvd.database.dao.IGpuDAO;
 import com.solvd.database.model.Gpu;
 import org.apache.logging.log4j.LogManager;
