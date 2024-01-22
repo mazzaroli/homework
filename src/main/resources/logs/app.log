@@ -1,4 +1,4 @@
-[INFO ] 2024-01-17 13:01:58.028 [main] RamDAOProxy - Proxy: Performing additional operations before retrieving all Ram entities
-[INFO ] 2024-01-17 13:01:58.033 [main] ConnectionPool - The connection was retrieved: com.mysql.cj.jdbc.ConnectionImpl@16746061
-[INFO ] 2024-01-17 13:01:58.054 [main] ConnectionPool - Putting the connection back to Connection pool: com.mysql.cj.jdbc.ConnectionImpl@16746061
-[INFO ] 2024-01-17 13:01:58.055 [main] RamDAOProxy - Proxy: Performing additional operations after retrieving all Ram entities
+[INFO ] 2024-01-17 13:43:45.612 [main] RamDAOProxy - Proxy: Performing additional operations before retrieving all Ram entities
+[INFO ] 2024-01-17 13:43:45.617 [main] ConnectionPool - The connection was retrieved: com.mysql.cj.jdbc.ConnectionImpl@674658f7
+[INFO ] 2024-01-17 13:43:45.640 [main] ConnectionPool - Putting the connection back to Connection pool: com.mysql.cj.jdbc.ConnectionImpl@674658f7
+[INFO ] 2024-01-17 13:43:45.641 [main] RamDAOProxy - Proxy: Performing additional operations after retrieving all Ram entities
