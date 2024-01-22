@@ -67,4 +67,6 @@ public class Gpu {
                 ", price=" + price +
                 '}';
     }
+
+    // GPU TEST COMMENT TO COMMIT
 }
