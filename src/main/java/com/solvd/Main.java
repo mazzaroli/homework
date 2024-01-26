@@ -16,64 +16,22 @@ import java.util.List;
 
 import static com.solvd.enums.DAOType.RAM;
 
+
+
+// Clase principal que utiliza ambas clases y sus métodos
 public class Main {
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        // =================== Proxy Pattern ===================
-        // Create an instance of the desired concrete factory (e.g., JDBC)
-        IRamDAO ramDAO = (IRamDAO) DAOFactoryGenerator.createFactory(FactoryType.MYBATIS).getFactory(RAM);
-        System.out.println(ramDAO.getEntities());
-
-        // =================== Builder Pattern ===================
-        Ram ram1 = new Ram.RamBuilder()
-                .id(1)
-                .capacity(64)
-                .computerId(123)
-                .build();
-
-        Ram ram2 = new Ram.RamBuilder()
-                .id(2)
-                .capacity(8)
-                .computerId(456)
-                .build();
-
-        Ram ram3 = new Ram.RamBuilder()
-                .id(3)
-                .capacity(777)
-                .computerId(789)
-                .build();
-
-        // RAM listener
-        Ram.RamListener ramListener = new Ram.RamListener() {
-            @Override
-            public void onRamCreated(Ram ram) {
-                System.out.println("Event: New RAM instance created - " + ram);
-            }
-        };
-
-        ramListener.onRamCreated(ram1);
-
-        // =================== MVC Pattern ===================
-        List<Ram> ramList = new ArrayList<>();
-        ramList.add(ram1);
-        ramList.add(ram2);
-        ramList.add(ram3);
-
-        RamView ramView = new ConsoleRamView(); // You can implement different views (console, GUI, web)
-        RamController ramController = new RamController(ramView, ramList);
-
-        // Display details of a RAM by ID
-        ramController.displayRamDetails(2);
-
-        // Display all RAMs
-        ramController.displayAllRam();
-
-        // Use a specific sorting strategy (can be changed dynamically)
-        ramController.setSortingStrategy(new SortByCapacity());
-
-        // Display Rams sorted by capacity
-        System.out.println("Hello");
-        ramController.displaySortedRam();
+//        // Crear instancias de las clases
+//        ClaseA instanciaA = new ClaseA();
+//        ClaseB instanciaB = new ClaseB();
+//
+//        // Llamar al método de la ClaseA
+//        instanciaA.metodoA();
+//
+//        // Llamar al método de la ClaseB
+//        instanciaB.metodoB();
     }
 }
+
+
