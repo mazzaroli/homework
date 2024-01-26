@@ -23,6 +23,12 @@ class ClaseA {
     }
 }
 
+// Clase B con otro método independiente
+class ClaseB {
+    public void metodoB() {
+        System.out.println("Saludos desde el método B de la ClaseB");
+    }
+}
 
 
 // Clase principal que utiliza ambas clases y sus métodos
@@ -30,13 +36,13 @@ public class Main {
 
     public static void main(String[] args) {
         ClaseA instanciaA = new ClaseA();
-//        ClaseB instanciaB = new ClaseB();
-//
-        // Llamar al método de la ClaseA
+        ClaseB instanciaB = new ClaseB();
+
+//         Llamar al método de la ClaseA
         instanciaA.metodoA();
-//
-//        // Llamar al método de la ClaseB
-//        instanciaB.metodoB();
+
+        // Llamar al método de la ClaseB
+        instanciaB.metodoB();
     }
 }
 
