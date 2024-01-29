@@ -16,33 +16,16 @@ import java.util.List;
 
 import static com.solvd.enums.DAOType.RAM;
 
-// Clase A con un método
-class ClaseA {
-    public void metodoA() {
-        System.out.println("Hola desde el método A de la ClaseA");
-    }
-}
-
-// Clase B con otro método independiente
-class ClaseB {
-    public void metodoB() {
-        System.out.println("Saludos desde el método B de la ClaseB");
-    }
-}
-
+// bueno () {
+//implementacion}
 
 // Clase principal que utiliza ambas clases y sus métodos
 public class Main {
 
     public static void main(String[] args) {
-        ClaseA instanciaA = new ClaseA();
-        ClaseB instanciaB = new ClaseB();
-
-//         Llamar al método de la ClaseA
-        instanciaA.metodoA();
-
-        // Llamar al método de la ClaseB
-        instanciaB.metodoB();
+//        bueno = algo(hashmap)
+//        fantastico(bueno);
+//        resultado(fantastico);
     }
 }
 
